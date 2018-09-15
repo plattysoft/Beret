@@ -23,13 +23,11 @@ class MainActivity : Activity() {
 
     lateinit var alphanumericDisplay: AlphanumericDisplay
 
-    lateinit var webView: WebView
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val webView: WebView = findViewById(R.id.webView)
+        val webView: WebView = findViewById(R.id.webView) as WebView
         webView.settings.javaScriptEnabled = true
         webView.addJavascriptInterface(WebAppInterface(this), "Android")
 
