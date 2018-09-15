@@ -1,6 +1,10 @@
-# BlockilyRainbowHat
+# BlocklyRainbowHat
 
-A project to program the Rainbow HAT on Android Thing on the device using Blockly
+A project to program the Rainbow HAT on Android Things on the device using Blockly (visual language that is the base of scratch)
+
+- Link to Android Things
+- Link to Rainbow HAT
+- Link to Blockly
 
 # Steps of the project
 
