@@ -7,7 +7,7 @@ apply plugin: 'kotlin-android-extensions'
 android {
     compileSdkVersion 27
     defaultConfig {
-        applicationId "com.plattysoft.blockilyrainbowhat"
+        applicationId "com.plattysoft.blocklyrainbowhat"
         minSdkVersion 27
         targetSdkVersion 27
         versionCode 1

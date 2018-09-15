@@ -18,6 +18,14 @@ function setBlueLed() {
     Android.setBlueLed(checkBox.checked)
 }
 
-function onButtonPressed(buttonName) {
-    document.getElementById('textbox').value = buttonName
+function onButtonAPressed(pressed) {
+    document.getElementById('buttonA').pressed = pressed
+}
+
+function onButtonBPressed(pressed) {
+    document.getElementById('buttonB').pressed = pressed
+}
+
+function onButtonCPressed(pressed) {
+    document.getElementById('buttonC').pressed = pressed
 }
