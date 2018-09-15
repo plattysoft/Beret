@@ -33,11 +33,12 @@ class MainActivity : AbstractBlocklyActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-//        setContentView(R.layout.activity_main)
 
         initRainbowHat()
 
         val webView: WebView = WebView(this)
+        setContentView(webView)
+
         webView.settings.javaScriptEnabled = true
         webView.addJavascriptInterface(WebAppInterface(this), "Android")
         webView.addJavascriptInterface(AlphanumericDisplayWebInterface(alphanumericDisplay), "AlphanumericDisplay")
@@ -66,7 +67,7 @@ class MainActivity : AbstractBlocklyActivity() {
                     null)
         }
 
-        loadSampleProgram(webView)
+//        loadSampleProgram(webView)
     }
 
     private fun loadSampleProgram(webView: WebView) {
