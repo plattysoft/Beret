@@ -19,13 +19,13 @@ function setBlueLed() {
 }
 
 function onButtonAPressed(pressed) {
-    document.getElementById('buttonA').pressed = pressed
+    document.getElementById('buttonA').checked = pressed
 }
 
 function onButtonBPressed(pressed) {
-    document.getElementById('buttonB').pressed = pressed
+    document.getElementById('buttonB').checked = pressed
 }
 
 function onButtonCPressed(pressed) {
-    document.getElementById('buttonC').pressed = pressed
+    document.getElementById('buttonC').checked = pressed
 }
