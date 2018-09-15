@@ -57,6 +57,26 @@ class MainActivity : Activity() {
                     "onButtonCPressed($b);",
                     null)
         }
+
+        loadSampleProgram(webView)
+    }
+
+    private fun loadSampleProgram(webView: WebView) {
+        val program =
+                "<script language=\"JavaScript\">\n"+
+                    "function onButtonAPressed(pressed) {\n" +
+                    "    Android.setRedLed(pressed)\n" +
+                    "}\n" +
+                    "\n" +
+                    "function onButtonBPressed(pressed) {\n" +
+                    "    Android.setGreenLed(pressed)\n" +
+                    "}\n" +
+                    "\n" +
+                    "function onButtonCPressed(pressed) {\n" +
+                    "    Android.setBlueLed(pressed)\n" +
+                    "}\n"+
+                "</script>"
+        webView.loadData(program, "text/html", "UTF-8")
     }
 
     private fun initRainbowHat() {
@@ -69,6 +89,8 @@ class MainActivity : Activity() {
         buttonC = RainbowHat.openButtonC()
 
         alphanumericDisplay = RainbowHat.openDisplay()
+        alphanumericDisplay.setEnabled(true)
+        alphanumericDisplay.setBrightness(AlphanumericDisplay.HT16K33_BRIGHTNESS_MAX)
     }
 
     override fun onDestroy() {
@@ -111,5 +133,10 @@ class WebAppInterface(val mainActivity: MainActivity) {
     @JavascriptInterface
     fun setBlueLed(state: Boolean) {
         mainActivity.blueLed.value = state
+    }
+
+    @JavascriptInterface
+    fun setAlphanumericDisplayText(text: String) {
+        mainActivity.alphanumericDisplay.display(text)
     }
 }

@@ -2,7 +2,8 @@
 <head>
 </head>
 <body>
-    <input name="searchTxt" type="text" maxlength="512" id="textbox" class="searchField"/>
+    <input name="display" type="text" maxlength="512" id="textbox" class="searchField"/>
+    <input name="sendText" type="button" onclick="setAlphanumericDisplayText();" value="Send to display" />
 
     <p>
         <input type="checkbox" id="redLed" onclick="setRedLed();" />Red LED
@@ -24,6 +25,7 @@
         <input type="checkbox" id="buttonC" />Button C
     </p>
 
-    <script src="main.js"></script>
+    <script src="main.js" />
+
 </body>
 </html>

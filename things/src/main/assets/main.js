@@ -1,8 +1,3 @@
-//var textContainer = document.createElement("p");
-//var nativeText = document.createTextNode("Android Text");
-//textContainer.appendChild(nativeText);
-//nativeText.nodeValue = "Test";
-
 function setRedLed() {
     var checkBox = document.getElementById("redLed");
     Android.setRedLed(checkBox.checked)
@@ -19,13 +14,18 @@ function setBlueLed() {
 }
 
 function onButtonAPressed(pressed) {
-    document.getElementById('buttonA').checked = pressed
+    document.getElementById('buttonA').checked = pressed;
 }
 
 function onButtonBPressed(pressed) {
-    document.getElementById('buttonB').checked = pressed
+    document.getElementById('buttonB').checked = pressed;
 }
 
 function onButtonCPressed(pressed) {
-    document.getElementById('buttonC').checked = pressed
+    document.getElementById('buttonC').checked = pressed;
+}
+
+function setAlphanumericDisplayText() {
+//    var display = document.getElementById("display");
+    Android.setAlphanumericDisplayText("RAUL");
 }
