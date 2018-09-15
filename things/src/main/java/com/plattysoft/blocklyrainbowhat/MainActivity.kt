@@ -8,8 +8,6 @@ import com.google.android.things.contrib.driver.button.Button
 import com.google.android.things.contrib.driver.ht16k33.AlphanumericDisplay
 import com.google.android.things.contrib.driver.rainbowhat.RainbowHat
 import com.google.android.things.pio.Gpio
-import com.plattysoft.blockilyrainbowhat.R
-import kotlinx.android.synthetic.main.activity_main.*
 
 private val TAG = MainActivity::class.java.simpleName
 
