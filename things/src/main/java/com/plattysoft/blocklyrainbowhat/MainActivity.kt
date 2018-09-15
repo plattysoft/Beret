@@ -27,11 +27,13 @@ class MainActivity : Activity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        initRainbowHat()
+
         val webView: WebView = findViewById(R.id.webView) as WebView
         webView.settings.javaScriptEnabled = true
         webView.addJavascriptInterface(WebAppInterface(this), "Android")
+        webView.addJavascriptInterface(AlphanumericDisplayWebInterface(alphanumericDisplay), "AlphanumericDisplay")
 
-        initRainbowHat()
 
         webView.loadUrl("file:///android_asset/index.html");
 
@@ -109,20 +111,5 @@ class WebAppInterface(val mainActivity: MainActivity) {
     @JavascriptInterface
     fun setBlueLed(state: Boolean) {
         mainActivity.blueLed.value = state
-    }
-
-    @JavascriptInterface
-    fun setAlphanumericDisplayEnable(state: Boolean) {
-        mainActivity.alphanumericDisplay.setEnabled(state)
-    }
-
-    @JavascriptInterface
-    fun display(text: String) {
-        mainActivity.alphanumericDisplay.display(text)
-    }
-
-    @JavascriptInterface
-    fun display(value: Int) {
-        mainActivity.alphanumericDisplay.display(value)
     }
 }
