@@ -2,7 +2,6 @@
   {
     "type": "rainbow_hat_button_a_clicked",
     "message0": "When button A is clicked",
-    "previousStatement": null,
     "nextStatement": "Action",
     "colour": 160
   }

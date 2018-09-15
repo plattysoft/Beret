@@ -1,5 +1,5 @@
 <toolbox>
-    <category name="Control">
+    <category name="Rainbow HAT">
         <block type="rainbow_hat_button_a_clicked"></block>
     </category>
     <category name="Control">
