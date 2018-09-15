@@ -43,9 +43,6 @@ class MainActivity : AbstractBlocklyActivity() {
         webView.addJavascriptInterface(WebAppInterface(this), "Android")
         webView.addJavascriptInterface(AlphanumericDisplayWebInterface(alphanumericDisplay), "AlphanumericDisplay")
 
-
-        webView.loadUrl("file:///android_asset/index.html");
-
         /*
          * The communication from the app towards the WebApp includes the information based on events
          * - Button A, B or C pressed
@@ -68,6 +65,7 @@ class MainActivity : AbstractBlocklyActivity() {
         }
 
 //        loadSampleProgram(webView)
+        webView.loadUrl("file:///android_asset/index.html");
     }
 
     private fun loadSampleProgram(webView: WebView) {
@@ -163,10 +161,5 @@ class WebAppInterface(val mainActivity: MainActivity) {
     @JavascriptInterface
     fun setBlueLed(state: Boolean) {
         mainActivity.blueLed.value = state
-    }
-
-    @JavascriptInterface
-    fun setAlphanumericDisplayText(text: String) {
-        mainActivity.alphanumericDisplay.display(text)
     }
 }

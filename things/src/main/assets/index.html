@@ -2,7 +2,7 @@
 <head>
 </head>
 <body>
-    <input name="display" type="text" maxlength="512" id="textbox" class="searchField"/>
+    <input name="textToDisplay" type="text" maxlength="512" id="textToDisplay" value="AHOY" />
     <input name="sendText" type="button" onclick="setAlphanumericDisplayText();" value="Send to display" />
 
     <p>
@@ -25,7 +25,8 @@
         <input type="checkbox" id="buttonC" />Button C
     </p>
 
-    <script src="main.js" />
+    <!-- Empty tag does not work on Android Things default WebView -->
+    <script src="main.js" ></script>
 
 </body>
 </html>

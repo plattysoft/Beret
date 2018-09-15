@@ -14,9 +14,4 @@ class AlphanumericDisplayWebInterface(val display: AlphanumericDisplay) {
     fun display(text: String) {
         display.display(text)
     }
-
-    @JavascriptInterface
-    fun display(value: Int) {
-        display.display(value)
-    }
 }

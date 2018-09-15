@@ -26,6 +26,6 @@ function onButtonCPressed(pressed) {
 }
 
 function setAlphanumericDisplayText() {
-//    var display = document.getElementById("display");
-    Android.setAlphanumericDisplayText("RAUL");
+    var textToDisplay = document.getElementById("textToDisplay");
+    AlphanumericDisplay.display(textToDisplay.value);
 }
