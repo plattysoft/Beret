@@ -37,7 +37,7 @@ class MainActivity : AbstractBlocklyActivity() {
         initRainbowHat()
 
         val webView: WebView = WebView(this)
-        setContentView(webView)
+//        setContentView(webView)
 
         webView.settings.javaScriptEnabled = true
         webView.addJavascriptInterface(WebAppInterface(this), "Android")
@@ -115,11 +115,13 @@ class MainActivity : AbstractBlocklyActivity() {
     }
 
     override fun getToolboxContentsXmlPath(): String {
-        return "default/toolbox.xml"
+//        return "default/toolbox.xml"
+        return "toolbox.xml"
     }
 
     override fun getBlockDefinitionsJsonPaths(): MutableList<String> {
         val assetPaths = ArrayList(DefaultBlocks.getAllBlockDefinitions())
+        assetPaths.add("buttonABlock.json")
         return assetPaths
     }
 
@@ -162,4 +164,5 @@ class WebAppInterface(val mainActivity: MainActivity) {
     fun setBlueLed(state: Boolean) {
         mainActivity.blueLed.value = state
     }
+
 }
