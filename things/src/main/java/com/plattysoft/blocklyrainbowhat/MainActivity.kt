@@ -8,10 +8,15 @@ import com.google.android.things.contrib.driver.button.Button
 import com.google.android.things.contrib.driver.ht16k33.AlphanumericDisplay
 import com.google.android.things.contrib.driver.rainbowhat.RainbowHat
 import com.google.android.things.pio.Gpio
+import com.google.blockly.android.AbstractBlocklyActivity
+import com.google.blockly.android.codegen.CodeGenerationRequest
+import com.google.blockly.android.codegen.LoggingCodeGeneratorCallback
+import com.google.blockly.model.DefaultBlocks
+import java.util.*
 
 private val TAG = MainActivity::class.java.simpleName
 
-class MainActivity : Activity() {
+class MainActivity : AbstractBlocklyActivity() {
 
     lateinit var redLed: Gpio
     lateinit var greenLed: Gpio
@@ -23,13 +28,16 @@ class MainActivity : Activity() {
 
     lateinit var alphanumericDisplay: AlphanumericDisplay
 
+    private var codeGeneratorCallback = LoggingCodeGeneratorCallback(this, "LoggingTag")
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+//        setContentView(R.layout.activity_main)
 
         initRainbowHat()
 
-        val webView: WebView = findViewById(R.id.webView) as WebView
+        val webView: WebView = WebView(this)
         webView.settings.javaScriptEnabled = true
         webView.addJavascriptInterface(WebAppInterface(this), "Android")
         webView.addJavascriptInterface(AlphanumericDisplayWebInterface(alphanumericDisplay), "AlphanumericDisplay")
@@ -107,6 +115,27 @@ class MainActivity : Activity() {
         alphanumericDisplay.close()
     }
 
+    override fun getToolboxContentsXmlPath(): String {
+        return "default/toolbox.xml"
+    }
+
+    override fun getBlockDefinitionsJsonPaths(): MutableList<String> {
+        val assetPaths = ArrayList(DefaultBlocks.getAllBlockDefinitions())
+        return assetPaths
+    }
+
+    override fun getGeneratorsJsPaths(): MutableList<String> {
+        return Arrays.asList()
+    }
+
+    override fun getCodeGenerationCallback(): CodeGenerationRequest.CodeGeneratorCallback {
+        return codeGeneratorCallback
+    }
+
+    override fun onInitBlankWorkspace() {
+        // Initialize available variable names.
+        controller.addVariable("item")
+    }
 }
 
 /**
