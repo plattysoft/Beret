@@ -52,41 +52,35 @@ class MainActivity : AbstractBlocklyActivity() {
          */
         buttonA.setOnButtonEventListener { button: Button, b: Boolean ->
             stateButtonA = b
-            webView.evaluateJavascript("javascript: " +
-                    "onButtonAPressed($b);",
-                    null)
+            if (b) {
+                webView.evaluateJavascript("javascript: onButtonAPressed();",null)
+            }
+            else {
+                webView.evaluateJavascript("javascript: onButtonAReleased();",null)
+            }
+            webView.evaluateJavascript("javascript: onButtonAChanged();",null)
         }
         buttonB.setOnButtonEventListener { button: Button, b: Boolean ->
             stateButtonB = b
-            webView.evaluateJavascript("javascript: " +
-                    "onButtonBPressed($b);",
-                    null)
+            if (b) {
+                webView.evaluateJavascript("javascript: onButtonBPressed();",null)
+            }
+            else {
+                webView.evaluateJavascript("javascript: onButtonBReleased();",null)
+            }
+            webView.evaluateJavascript("javascript: onButtonBChanged();",null)
         }
         buttonC.setOnButtonEventListener { button: Button, b: Boolean ->
             stateButtonC = b
-            webView.evaluateJavascript("javascript: " +
-                    "onButtonCPressed($b);",
-                    null)
+            if (b) {
+                webView.evaluateJavascript("javascript: onButtonCPressed();",null)
+            }
+            else {
+                webView.evaluateJavascript("javascript: onButtonCReleased();",null)
+            }
+            webView.evaluateJavascript("javascript: onButtonCChanged();",null)
         }
-
-//        loadSampleProgram(webView)
         webView.loadUrl("file:///android_asset/index.html");
-    }
-
-    private fun loadSampleProgram(webView: WebView) {
-       loadProgram(
-                    "function onButtonAPressed(pressed) {\n" +
-                    "    Android.setRedLed(pressed)\n" +
-                    "}\n" +
-                    "\n" +
-                    "function onButtonBPressed(pressed) {\n" +
-                    "    Android.setGreenLed(pressed)\n" +
-                    "}\n" +
-                    "\n" +
-                    "function onButtonCPressed(pressed) {\n" +
-                    "    Android.setBlueLed(pressed)\n" +
-                    "}\n")
-
     }
 
     private fun loadProgram(program: String) {
