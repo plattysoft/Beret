@@ -32,7 +32,18 @@ Blockly.JavaScript['rainbow_hat_button_action'] = function(block) {
 };
 
 Blockly.JavaScript['rainbow_hat_read_button'] = function(block) {
-    return ["Android.getStateButtonA()", Blockly.JavaScript.ORDER_NONE];
+var button = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('BUTTON'), Blockly.Variables.NAME_TYPE);
+    var buttonName = 'A';
+    if (button == "BUTTON_A") {
+        buttonName = 'A';
+    }
+    else if (button == "BUTTON_B") {
+        buttonName = 'B';
+    }
+    else if (button == "BUTTON_C") {
+        buttonName = 'C';
+    }
+    return ["Android.getStateButton"+buttonName+"()", Blockly.JavaScript.ORDER_NONE];
 };
 
 Blockly.JavaScript['rainbow_hat_set_led_value'] = function(block) {
