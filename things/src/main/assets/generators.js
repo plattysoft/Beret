@@ -48,7 +48,7 @@ var button = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('BUTTON'
 
 Blockly.JavaScript['rainbow_hat_set_led_value'] = function(block) {
     var led = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('LED'), Blockly.Variables.NAME_TYPE);
-    var pressed = Blockly.JavaScript.valueToCode(block, 'VALUE', Blockly.JavaScript.ORDER_ADDITION) || 'true'
+    var pressed = Blockly.JavaScript.valueToCode(block, 'VALUE', Blockly.JavaScript.ORDER_FUNCTION_CALL) || 'true'
     if (led == "LED_RED") {
         return 'Android.setRedLed('+pressed+');\n';
     }
@@ -58,4 +58,10 @@ Blockly.JavaScript['rainbow_hat_set_led_value'] = function(block) {
     else {
         return 'Android.setBlueLed('+pressed+');\n';
     }
+};
+
+Blockly.JavaScript['rainbow_hat_display_text'] = function(block) {
+    var text = Blockly.JavaScript.valueToCode(block, 'VALUE', Blockly.JavaScript.ORDER_FUNCTION_CALL) || "''"
+//    var text = "'"+block.getFieldValue('VALUE')+"'"
+    return 'AlphanumericDisplay.display('+text+');\n';
 };

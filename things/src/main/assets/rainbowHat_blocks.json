@@ -1,7 +1,7 @@
 [
   {
     "type": "rainbow_hat_button_action",
-    "message0": "When %1 is %2",
+    "message0": "when %1 is %2",
     "args0": [
       {
         "type": "field_dropdown",
@@ -49,7 +49,7 @@
 ,
   {
     "type": "rainbow_hat_set_led_value",
-    "message0": "Set %1 LED to %2",
+    "message0": "set %1 LED to %2",
     "args0": [
       {
         "type": "field_dropdown",
@@ -72,22 +72,13 @@
   }
   ,
   {
-    "type": "rainbow_hat_set_led_value",
-    "message0": "Set %1 LED to %2",
+    "type": "rainbow_hat_display_text",
+    "message0": "display %1",
     "args0": [
-      {
-        "type": "field_dropdown",
-        "name": "LED",
-        "options": [
-          [ "Red", "LED_RED" ],
-          [ "Green", "LED_GREEN" ],
-          [ "Blue", "LED_BLUE" ]
-        ]
-      },
       {
         "type": "input_value",
         "name": "VALUE",
-        "check": "Boolean"
+        "check": "String"
       }
     ],
     "previousStatement": "Action",
