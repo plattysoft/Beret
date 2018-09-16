@@ -62,9 +62,6 @@
                 </shadow>
             </value>
         </block>
-        <block type="text_join">
-            <mutation items="2"></mutation>
-        </block>
         <block type="text_getSubstring">
             <mutation at1="true" at2="true"></mutation>
             <field name="WHERE1">FROM_START</field>
@@ -191,7 +188,7 @@
         </block>
         <block type="math_random_float"></block>
     </category>
-    <sep></sep>
-    <category name="Variables" colour="#A65C81" custom="VARIABLE"></category>
-    <category name="Functions" colour="#9A5CA6" custom="PROCEDURE"></category>
+    <!--<sep></sep>-->
+    <!--<category name="Variables" colour="#A65C81" custom="VARIABLE"></category>-->
+    <!--<category name="Functions" colour="#9A5CA6" custom="PROCEDURE"></category>-->
 </toolbox>

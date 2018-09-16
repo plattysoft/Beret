@@ -70,4 +70,28 @@
     "nextStatement": "Action",
     "colour": 160
   }
+  ,
+  {
+    "type": "rainbow_hat_set_led_value",
+    "message0": "Set %1 LED to %2",
+    "args0": [
+      {
+        "type": "field_dropdown",
+        "name": "LED",
+        "options": [
+          [ "Red", "LED_RED" ],
+          [ "Green", "LED_GREEN" ],
+          [ "Blue", "LED_BLUE" ]
+        ]
+      },
+      {
+        "type": "input_value",
+        "name": "VALUE",
+        "check": "Boolean"
+      }
+    ],
+    "previousStatement": "Action",
+    "nextStatement": "Action",
+    "colour": 160
+  }
 ]
