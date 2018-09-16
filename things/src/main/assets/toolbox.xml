@@ -88,22 +88,6 @@
                 </shadow>
             </value>
         </block>
-        <block type="text_print">
-            <value name="TEXT">
-                <shadow type="text">
-                    <field name="TEXT">abc</field>
-                </shadow>
-            </value>
-        </block>
-        <block type="text_prompt_ext">
-            <mutation type="TEXT"></mutation>
-            <field name="TYPE">TEXT</field>
-            <value name="TEXT">
-                <shadow type="text">
-                    <field name="TEXT">abc</field>
-                </shadow>
-            </value>
-        </block>
     </category>
     <category name="Colour" colour="#A6745C">
         <block type="colour_picker">
@@ -162,19 +146,7 @@
                 </shadow>
             </value>
         </block>
-        <block type="math_random_int">
-            <value name="FROM">
-                <shadow type="math_number">
-                    <field name="NUM">1</field>
-                </shadow>
-            </value>
-            <value name="TO">
-                <shadow type="math_number">
-                    <field name="NUM">100</field>
-                </shadow>
-            </value>
-        </block>
-        <block type="math_random_int">
+         <block type="math_random_int">
             <value name="FROM">
                 <shadow type="math_number">
                     <field name="NUM">1</field>
