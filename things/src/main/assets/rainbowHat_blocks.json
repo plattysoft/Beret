@@ -1,22 +1,53 @@
 [
   {
     "type": "rainbow_hat_button_a_clicked",
-    "message0": "When button A is clicked",
-    "nextStatement": "Action",
+    "message0": "When button %1 is %2",
+    "args0": [
+      {
+        "type": "field_dropdown",
+        "name": "BUTTON",
+        "options": [
+          [ "A", "BUTTON_A" ],
+          [ "B", "BUTTON_B" ],
+          [ "C", "BUTTON_C" ]
+        ]
+      },
+      {
+        "type": "field_dropdown",
+        "name": "STATE",
+        "options": [
+          [ "pressed", "BUTTON_PRESSED" ],
+          [ "released", "BUTTON_RELEASED" ]
+        ]
+      }
+    ],
+    "message1": "do %1",
+    "args1": [
+      {"type": "input_statement", "name": "DO"}
+    ],
     "colour": 160
   }
-//,
-//  {
-//    "type": "rainbow_hat_set_led_value",
-//    "message0": "Set green LED to %1",
-//    "args0": [
-//      {
-//        "type": "input_value",
-//        "name": "VALUE",
-//        "check": "Boolean"
-//      }
-//    ],
-//    "previousStatement": "Action",
-//    "colour": 160
-//  }
+,
+  {
+    "type": "rainbow_hat_set_led_value",
+    "message0": "Set %1 LED to %2",
+    "args0": [
+      {
+        "type": "field_dropdown",
+        "name": "LED",
+        "options": [
+          [ "Red", "LED_RED" ],
+          [ "Green", "LED_GREEN" ],
+          [ "Blue", "LED_BLUE" ]
+        ]
+      },
+      {
+        "type": "input_value",
+        "name": "VALUE",
+        "check": "Boolean"
+      }
+    ],
+    "previousStatement": "Action",
+    "colour": 160
+  }
 ]
