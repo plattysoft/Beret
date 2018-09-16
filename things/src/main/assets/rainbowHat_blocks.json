@@ -1,15 +1,15 @@
 [
   {
-    "type": "rainbow_hat_button_a_clicked",
-    "message0": "When button %1 is %2",
+    "type": "rainbow_hat_button_action",
+    "message0": "When %1 is %2",
     "args0": [
       {
         "type": "field_dropdown",
         "name": "BUTTON",
         "options": [
-          [ "A", "BUTTON_A" ],
-          [ "B", "BUTTON_B" ],
-          [ "C", "BUTTON_C" ]
+          [ "Button A", "BUTTON_A" ],
+          [ "Button B", "BUTTON_B" ],
+          [ "Button C", "BUTTON_C" ]
         ]
       },
       {
@@ -17,13 +17,32 @@
         "name": "STATE",
         "options": [
           [ "pressed", "BUTTON_PRESSED" ],
-          [ "released", "BUTTON_RELEASED" ]
+          [ "released", "BUTTON_RELEASED" ],
+          [ "changed", "BUTTON_CHANGED" ]
         ]
       }
     ],
     "message1": "do %1",
     "args1": [
       {"type": "input_statement", "name": "DO"}
+    ],
+    "colour": 160
+  }
+  ,
+  {
+    "type": "rainbow_hat_read_button",
+    "message0": "state of %1",
+    "output": "Boolean",
+    "args0": [
+      {
+        "type": "field_dropdown",
+        "name": "BUTTON",
+        "options": [
+          [ "Button A", "BUTTON_A" ],
+          [ "Button B", "BUTTON_B" ],
+          [ "Button C", "BUTTON_C" ]
+        ]
+      }
     ],
     "colour": 160
   }
@@ -48,6 +67,7 @@
       }
     ],
     "previousStatement": "Action",
+    "nextStatement": "Action",
     "colour": 160
   }
 ]

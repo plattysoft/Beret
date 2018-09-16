@@ -1,6 +1,7 @@
 package com.plattysoft.blocklyrainbowhat
 
 import android.os.Bundle
+import android.util.Log
 import android.webkit.JavascriptInterface
 import android.webkit.WebView
 import com.google.android.things.contrib.driver.button.Button
@@ -24,6 +25,10 @@ class MainActivity : AbstractBlocklyActivity() {
     lateinit var buttonB: Button
     lateinit var buttonC: Button
 
+    var stateButtonA = false
+    var stateButtonB = false
+    var stateButtonC = false
+
     lateinit var alphanumericDisplay: AlphanumericDisplay
 
     lateinit var webView: WebView
@@ -46,16 +51,19 @@ class MainActivity : AbstractBlocklyActivity() {
          * - Temperature / pressure changed
          */
         buttonA.setOnButtonEventListener { button: Button, b: Boolean ->
+            stateButtonA = b
             webView.evaluateJavascript("javascript: " +
                     "onButtonAPressed($b);",
                     null)
         }
         buttonB.setOnButtonEventListener { button: Button, b: Boolean ->
+            stateButtonB = b
             webView.evaluateJavascript("javascript: " +
                     "onButtonBPressed($b);",
                     null)
         }
         buttonC.setOnButtonEventListener { button: Button, b: Boolean ->
+            stateButtonC = b
             webView.evaluateJavascript("javascript: " +
                     "onButtonCPressed($b);",
                     null)
@@ -82,6 +90,7 @@ class MainActivity : AbstractBlocklyActivity() {
     }
 
     private fun loadProgram(program: String) {
+        Log.d("Program", program)
         val tagProgram = "<script language=\"JavaScript\">\n $program </script>"
         runOnUiThread{
             webView.loadData(tagProgram, "text/html", "UTF-8")
@@ -157,6 +166,21 @@ class WebAppInterface(val mainActivity: MainActivity) {
     @JavascriptInterface
     fun setRedLed(state: Boolean) {
         mainActivity.redLed.value = state
+    }
+
+    @JavascriptInterface
+    fun getStateButtonA(): Boolean {
+        return mainActivity.stateButtonA
+    }
+
+    @JavascriptInterface
+    fun getStateButtonB(): Boolean {
+        return mainActivity.stateButtonB
+    }
+
+    @JavascriptInterface
+    fun getStateButtonC(): Boolean {
+        return mainActivity.stateButtonC
     }
 
     @JavascriptInterface
