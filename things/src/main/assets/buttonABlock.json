@@ -1,8 +1,0 @@
-[
-  {
-    "type": "rainbow_hat_button_a_clicked",
-    "message0": "When button A is clicked",
-    "nextStatement": "Action",
-    "colour": 160
-  }
-]

@@ -1,6 +1,7 @@
 <toolbox>
     <category name="Rainbow HAT">
         <block type="rainbow_hat_button_a_clicked"></block>
+        <!--<block type="rainbow_hat_set_led_value"></block>-->
     </category>
     <category name="Control">
         <block type="controls_if"></block>

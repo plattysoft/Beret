@@ -1,0 +1,22 @@
+[
+  {
+    "type": "rainbow_hat_button_a_clicked",
+    "message0": "When button A is clicked",
+    "nextStatement": "Action",
+    "colour": 160
+  }
+//,
+//  {
+//    "type": "rainbow_hat_set_led_value",
+//    "message0": "Set green LED to %1",
+//    "args0": [
+//      {
+//        "type": "input_value",
+//        "name": "VALUE",
+//        "check": "Boolean"
+//      }
+//    ],
+//    "previousStatement": "Action",
+//    "colour": 160
+//  }
+]

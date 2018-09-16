@@ -1,6 +1,5 @@
 package com.plattysoft.blocklyrainbowhat
 
-import android.app.Activity
 import android.os.Bundle
 import android.webkit.JavascriptInterface
 import android.webkit.WebView
@@ -10,7 +9,6 @@ import com.google.android.things.contrib.driver.rainbowhat.RainbowHat
 import com.google.android.things.pio.Gpio
 import com.google.blockly.android.AbstractBlocklyActivity
 import com.google.blockly.android.codegen.CodeGenerationRequest
-import com.google.blockly.android.codegen.LoggingCodeGeneratorCallback
 import com.google.blockly.model.DefaultBlocks
 import java.util.*
 
@@ -28,15 +26,14 @@ class MainActivity : AbstractBlocklyActivity() {
 
     lateinit var alphanumericDisplay: AlphanumericDisplay
 
-    private var codeGeneratorCallback = LoggingCodeGeneratorCallback(this, "LoggingTag")
-
+    lateinit var webView: WebView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         initRainbowHat()
 
-        val webView: WebView = WebView(this)
+        webView = WebView(this)
 //        setContentView(webView)
 
         webView.settings.javaScriptEnabled = true
@@ -69,8 +66,7 @@ class MainActivity : AbstractBlocklyActivity() {
     }
 
     private fun loadSampleProgram(webView: WebView) {
-        val program =
-                "<script language=\"JavaScript\">\n"+
+       loadProgram(
                     "function onButtonAPressed(pressed) {\n" +
                     "    Android.setRedLed(pressed)\n" +
                     "}\n" +
@@ -81,9 +77,15 @@ class MainActivity : AbstractBlocklyActivity() {
                     "\n" +
                     "function onButtonCPressed(pressed) {\n" +
                     "    Android.setBlueLed(pressed)\n" +
-                    "}\n"+
-                "</script>"
-        webView.loadData(program, "text/html", "UTF-8")
+                    "}\n")
+
+    }
+
+    private fun loadProgram(program: String) {
+        val tagProgram = "<script language=\"JavaScript\">\n $program </script>"
+        runOnUiThread{
+            webView.loadData(tagProgram, "text/html", "UTF-8")
+        }
     }
 
     private fun initRainbowHat() {
@@ -121,16 +123,18 @@ class MainActivity : AbstractBlocklyActivity() {
 
     override fun getBlockDefinitionsJsonPaths(): MutableList<String> {
         val assetPaths = ArrayList(DefaultBlocks.getAllBlockDefinitions())
-        assetPaths.add("buttonABlock.json")
+        assetPaths.add("rainbowHat_blocks.json")
         return assetPaths
     }
 
     override fun getGeneratorsJsPaths(): MutableList<String> {
-        return Arrays.asList()
+        return Arrays.asList("generators.js")
     }
 
     override fun getCodeGenerationCallback(): CodeGenerationRequest.CodeGeneratorCallback {
-        return codeGeneratorCallback
+        return CodeGenerationRequest.CodeGeneratorCallback {
+            loadProgram(it)
+        }
     }
 
     override fun onInitBlankWorkspace() {
