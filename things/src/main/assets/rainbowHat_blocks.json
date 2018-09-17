@@ -107,7 +107,7 @@
       {
         "type": "input_value",
         "name": "VALUE",
-        "check": "Double"
+        "check": ["Double", "Float", "Integer", "Number"]
       }
     ],
     "previousStatement": "Action",
