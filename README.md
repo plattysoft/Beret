@@ -9,11 +9,14 @@ The list of currently available blocks for the Rainbow HAT is:
 - when [Button] is [pressed | released | changed]
 - state of [Button] : Boolean
 - Set [Red | Green | Blue] led to [Boolean]
-- display [text | number]
+- display text [text]
+- display number [number]
 - temperature : Float
 - pressure : Float
 - play frequency [Number]
 - stop playing 
+- display colors [array of colors]
+- display colors [array of colors as insets]
 
 Missing control for the RGB LED Strip (WIP)
 

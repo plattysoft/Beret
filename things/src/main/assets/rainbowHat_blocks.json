@@ -74,12 +74,28 @@
   {
     "type": "rainbow_hat_display_text",
     "inputsInline": true,
-    "message0": "display %1 on LCD",
+    "message0": "display text %1 on LCD",
     "args0": [
       {
         "type": "input_value",
         "name": "VALUE",
-        "check": ["String", "Float"]
+        "check": "String"
+      }
+    ],
+    "previousStatement": "Action",
+    "nextStatement": "Action",
+    "colour": 160
+  }
+,
+  {
+    "type": "rainbow_hat_display_number",
+    "inputsInline": true,
+    "message0": "display number %1 on LCD",
+    "args0": [
+      {
+        "type": "input_value",
+        "name": "VALUE",
+        "check": "Float"
       }
     ],
     "previousStatement": "Action",

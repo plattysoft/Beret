@@ -4,6 +4,7 @@
         <block type="rainbow_hat_read_button"></block>
         <block type="rainbow_hat_set_led_value"></block>
         <block type="rainbow_hat_display_text"></block>
+        <block type="rainbow_hat_display_number"></block>
         <block type="rainbow_hat_read_temperature"></block>
         <block type="rainbow_hat_read_pressure"></block>
         <block type="rainbow_hat_play"></block>

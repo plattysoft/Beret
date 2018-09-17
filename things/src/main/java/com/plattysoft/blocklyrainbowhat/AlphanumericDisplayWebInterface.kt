@@ -11,12 +11,12 @@ class AlphanumericDisplayWebInterface(val display: AlphanumericDisplay) {
     }
 
     @JavascriptInterface
-    fun display(text: String) {
+    fun displayText(text: String) {
         display.display(text)
     }
 
     @JavascriptInterface
-    fun display(value: Double) {
+    fun displayNumber(value: Double) {
         display.display(value)
     }
 }
