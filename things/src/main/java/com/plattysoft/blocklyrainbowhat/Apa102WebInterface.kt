@@ -6,7 +6,7 @@ import com.google.android.things.contrib.driver.apa102.Apa102
 
 class Apa102WebInterface(private val ledStrip: Apa102) {
     @JavascriptInterface
-    fun write(colors: Array<Int>) {
-        ledStrip.write(colors.toIntArray())
+    fun write(colors: IntArray) {
+        ledStrip.write(colors)
     }
 }

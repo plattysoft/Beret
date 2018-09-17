@@ -1,5 +1,6 @@
 package com.plattysoft.blocklyrainbowhat
 
+import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import android.webkit.JavascriptInterface
@@ -116,7 +117,10 @@ class MainActivity : RainbowHatBlocklyBaseActivity() {
         buzzer = RainbowHat.openPiezo()
 
         ledStrip = RainbowHat.openLedStrip()
-        ledStrip.brightness = Apa102.MAX_BRIGHTNESS
+        ledStrip.direction = Apa102.Direction.REVERSED
+        ledStrip.brightness = 1
+        val colors = intArrayOf(Color.RED, Color.TRANSPARENT, Color.TRANSPARENT, Color.TRANSPARENT, Color.TRANSPARENT, Color.TRANSPARENT, Color.TRANSPARENT)
+        ledStrip.write(colors)
     }
 
     override fun onDestroy() {

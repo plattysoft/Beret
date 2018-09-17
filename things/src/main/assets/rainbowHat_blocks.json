@@ -127,14 +127,50 @@
 ,
   {
     "type": "rainbow_hat_write_led_strip",
-    "message0": "display colors %1",
+    "message0": "display colors %1 %2 %3 %4 %5 %6 %7",
     "args0": [
       {
-        "type": "input_value",
-        "name": "VALUE",
-        "check": "Array"
+        "type": "field_colour",
+        "name": "COLOR1",
+        "colour": "#ff0000"
+      },
+      {
+        "type": "field_colour",
+        "name": "COLOR2",
+        "colour": "#ff0000"
+      }
+      ,
+      {
+        "type": "field_colour",
+        "name": "COLOR3",
+        "colour": "#ff0000"
+      }
+      ,
+      {
+        "type": "field_colour",
+        "name": "COLOR4",
+        "colour": "#ff0000"
+      }
+    ,
+      {
+        "type": "field_colour",
+        "name": "COLOR5",
+        "colour": "#ff0000"
+      }
+    ,
+      {
+        "type": "field_colour",
+        "name": "COLOR6",
+        "colour": "#ff0000"
+      }
+    ,
+      {
+        "type": "field_colour",
+        "name": "COLOR7",
+        "colour": "#ff0000"
       }
     ],
+    "inputsInline": true,
     "previousStatement": "Action",
     "nextStatement": "Action",
     "colour": 160
