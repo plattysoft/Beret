@@ -7,6 +7,7 @@ import android.webkit.WebView
 import com.google.android.things.contrib.driver.bmx280.Bmx280
 import com.google.android.things.contrib.driver.button.Button
 import com.google.android.things.contrib.driver.ht16k33.AlphanumericDisplay
+import com.google.android.things.contrib.driver.pwmspeaker.Speaker
 import com.google.android.things.contrib.driver.rainbowhat.RainbowHat
 import com.google.android.things.pio.Gpio
 import com.google.blockly.android.codegen.CodeGenerationRequest
@@ -31,6 +32,8 @@ class MainActivity : RainbowHatBlocklyBaseActivity() {
 
     lateinit var temperatureSensor: Bmx280
 
+    lateinit var buzzer: Speaker
+
     lateinit var webView: WebView
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -44,6 +47,7 @@ class MainActivity : RainbowHatBlocklyBaseActivity() {
         webView.addJavascriptInterface(WebAppInterface(this), "Android")
         webView.addJavascriptInterface(AlphanumericDisplayWebInterface(alphanumericDisplay), "AlphanumericDisplay")
         webView.addJavascriptInterface(Bmx280WebInterface(temperatureSensor), "Bmx280")
+        webView.addJavascriptInterface(SpeakerWebInterface(buzzer), "Speaker")
 
 
         /*
@@ -109,6 +113,8 @@ class MainActivity : RainbowHatBlocklyBaseActivity() {
         temperatureSensor.temperatureOversampling = Bmx280.OVERSAMPLING_1X
         temperatureSensor.pressureOversampling = Bmx280.OVERSAMPLING_1X
         temperatureSensor.setMode(Bmx280.MODE_NORMAL)
+
+        buzzer = RainbowHat.openPiezo()
     }
 
     override fun onDestroy() {
@@ -123,8 +129,8 @@ class MainActivity : RainbowHatBlocklyBaseActivity() {
         buttonC.close()
 
         alphanumericDisplay.close()
-
         temperatureSensor.close()
+        buzzer.close()
     }
 
     override fun getCodeGenerationCallback(): CodeGenerationRequest.CodeGeneratorCallback {

@@ -99,4 +99,27 @@
     "output": "Float",
     "colour": 160
   }
+  ,
+  {
+    "type": "rainbow_hat_play",
+    "message0": "play %1",
+    "args0": [
+      {
+        "type": "input_value",
+        "name": "VALUE",
+        "check": "Double"
+      }
+    ],
+    "previousStatement": "Action",
+    "nextStatement": "Action",
+    "colour": 160
+  }
+,
+  {
+    "type": "rainbow_hat_stop_playing",
+    "message0": "stop playing",
+    "previousStatement": "Action",
+    "nextStatement": "Action",
+    "colour": 160
+  }
 ]

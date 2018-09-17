@@ -73,3 +73,12 @@ Blockly.JavaScript['rainbow_hat_read_temperature'] = function(block) {
 Blockly.JavaScript['rainbow_hat_read_pressure'] = function(block) {
     return ["Bmx280.readPressure()", Blockly.JavaScript.ORDER_NONE];
 };
+
+Blockly.JavaScript['rainbow_hat_play'] = function(block) {
+    var frequency = Blockly.JavaScript.valueToCode(block, 'VALUE', Blockly.JavaScript.ORDER_FUNCTION_CALL) || "0.0"
+    return 'Speaker.play('+frequency+');\n';
+};
+
+Blockly.JavaScript['rainbow_hat_stop_playing'] = function(block) {
+    return 'Speaker.stop();\n';
+};
