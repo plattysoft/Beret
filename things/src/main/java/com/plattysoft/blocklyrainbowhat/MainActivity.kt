@@ -8,14 +8,11 @@ import com.google.android.things.contrib.driver.button.Button
 import com.google.android.things.contrib.driver.ht16k33.AlphanumericDisplay
 import com.google.android.things.contrib.driver.rainbowhat.RainbowHat
 import com.google.android.things.pio.Gpio
-import com.google.blockly.android.AbstractBlocklyActivity
 import com.google.blockly.android.codegen.CodeGenerationRequest
-import com.google.blockly.model.DefaultBlocks
-import java.util.*
 
 private val TAG = MainActivity::class.java.simpleName
 
-class MainActivity : AbstractBlocklyActivity() {
+class MainActivity : RainbowHatBlocklyBaseActivity() {
 
     lateinit var redLed: Gpio
     lateinit var greenLed: Gpio
@@ -117,21 +114,6 @@ class MainActivity : AbstractBlocklyActivity() {
         buttonC.close()
 
         alphanumericDisplay.close()
-    }
-
-    override fun getToolboxContentsXmlPath(): String {
-//        return "default/toolbox.xml"
-        return "toolbox.xml"
-    }
-
-    override fun getBlockDefinitionsJsonPaths(): MutableList<String> {
-        val assetPaths = ArrayList(DefaultBlocks.getAllBlockDefinitions())
-        assetPaths.add("rainbowHat_blocks.json")
-        return assetPaths
-    }
-
-    override fun getGeneratorsJsPaths(): MutableList<String> {
-        return Arrays.asList("generators.js")
     }
 
     override fun getCodeGenerationCallback(): CodeGenerationRequest.CodeGeneratorCallback {
