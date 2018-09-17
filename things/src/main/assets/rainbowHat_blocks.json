@@ -193,6 +193,23 @@
   }
 ,
   {
+    "type": "rainbow_hat_write_led_strip_array",
+    "message0": "display colors %1",
+    "inputsInline": true,
+    "args0": [
+      {
+        "type": "input_value",
+        "name": "COLORS",
+        "check": "Array"
+      }
+    ],
+    "inputsInline": true,
+    "previousStatement": "Action",
+    "nextStatement": "Action",
+    "colour": 160
+  }
+,
+  {
     "type": "rainbow_hat_write_led_strip_variables",
     "message0": "display colors %1 %2 %3 %4 %5 %6 %7",
     "inputsInline": true,
