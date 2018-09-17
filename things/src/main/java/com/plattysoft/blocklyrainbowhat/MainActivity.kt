@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.util.Log
 import android.webkit.JavascriptInterface
 import android.webkit.WebView
+import com.google.android.things.contrib.driver.bmx280.Bmx280
 import com.google.android.things.contrib.driver.button.Button
 import com.google.android.things.contrib.driver.ht16k33.AlphanumericDisplay
 import com.google.android.things.contrib.driver.rainbowhat.RainbowHat
@@ -28,6 +29,8 @@ class MainActivity : RainbowHatBlocklyBaseActivity() {
 
     lateinit var alphanumericDisplay: AlphanumericDisplay
 
+    lateinit var temperatureSensor: Bmx280
+
     lateinit var webView: WebView
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -36,11 +39,12 @@ class MainActivity : RainbowHatBlocklyBaseActivity() {
         initRainbowHat()
 
         webView = WebView(this)
-//        setContentView(webView)
 
         webView.settings.javaScriptEnabled = true
         webView.addJavascriptInterface(WebAppInterface(this), "Android")
         webView.addJavascriptInterface(AlphanumericDisplayWebInterface(alphanumericDisplay), "AlphanumericDisplay")
+        webView.addJavascriptInterface(Bmx280WebInterface(temperatureSensor), "Bmx280")
+
 
         /*
          * The communication from the app towards the WebApp includes the information based on events
@@ -100,6 +104,11 @@ class MainActivity : RainbowHatBlocklyBaseActivity() {
         alphanumericDisplay = RainbowHat.openDisplay()
         alphanumericDisplay.setEnabled(true)
         alphanumericDisplay.setBrightness(AlphanumericDisplay.HT16K33_BRIGHTNESS_MAX)
+
+        temperatureSensor = RainbowHat.openSensor()
+        temperatureSensor.temperatureOversampling = Bmx280.OVERSAMPLING_1X
+        temperatureSensor.pressureOversampling = Bmx280.OVERSAMPLING_1X
+        temperatureSensor.setMode(Bmx280.MODE_NORMAL)
     }
 
     override fun onDestroy() {
@@ -114,6 +123,8 @@ class MainActivity : RainbowHatBlocklyBaseActivity() {
         buttonC.close()
 
         alphanumericDisplay.close()
+
+        temperatureSensor.close()
     }
 
     override fun getCodeGenerationCallback(): CodeGenerationRequest.CodeGeneratorCallback {

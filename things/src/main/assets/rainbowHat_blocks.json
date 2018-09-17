@@ -85,4 +85,18 @@
     "nextStatement": "Action",
     "colour": 160
   }
+  ,
+  {
+    "type": "rainbow_hat_read_temperature",
+    "message0": "temperature",
+    "output": "Float",
+    "colour": 160
+  }
+  ,
+  {
+    "type": "rainbow_hat_read_pressure",
+    "message0": "pressure",
+    "output": "Float",
+    "colour": 160
+  }
 ]

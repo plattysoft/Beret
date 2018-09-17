@@ -65,3 +65,11 @@ Blockly.JavaScript['rainbow_hat_display_text'] = function(block) {
 //    var text = "'"+block.getFieldValue('VALUE')+"'"
     return 'AlphanumericDisplay.display('+text+');\n';
 };
+
+Blockly.JavaScript['rainbow_hat_read_temperature'] = function(block) {
+    return ["Bmx280.readTemperature()", Blockly.JavaScript.ORDER_NONE];
+};
+
+Blockly.JavaScript['rainbow_hat_read_pressure'] = function(block) {
+    return ["Bmx280.readPressure()", Blockly.JavaScript.ORDER_NONE];
+};
