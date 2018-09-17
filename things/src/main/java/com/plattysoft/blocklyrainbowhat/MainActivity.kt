@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.util.Log
 import android.webkit.JavascriptInterface
 import android.webkit.WebView
+import com.google.android.things.contrib.driver.apa102.Apa102
 import com.google.android.things.contrib.driver.bmx280.Bmx280
 import com.google.android.things.contrib.driver.button.Button
 import com.google.android.things.contrib.driver.ht16k33.AlphanumericDisplay
@@ -29,10 +30,9 @@ class MainActivity : RainbowHatBlocklyBaseActivity() {
     var stateButtonC = false
 
     lateinit var alphanumericDisplay: AlphanumericDisplay
-
     lateinit var temperatureSensor: Bmx280
-
     lateinit var buzzer: Speaker
+    lateinit var ledStrip: Apa102
 
     lateinit var webView: WebView
 
@@ -48,12 +48,11 @@ class MainActivity : RainbowHatBlocklyBaseActivity() {
         webView.addJavascriptInterface(AlphanumericDisplayWebInterface(alphanumericDisplay), "AlphanumericDisplay")
         webView.addJavascriptInterface(Bmx280WebInterface(temperatureSensor), "Bmx280")
         webView.addJavascriptInterface(SpeakerWebInterface(buzzer), "Speaker")
-
+        webView.addJavascriptInterface(Apa102WebInterface(ledStrip), "Apa102")
 
         /*
          * The communication from the app towards the WebApp includes the information based on events
          * - Button A, B or C pressed
-         * - Temperature / pressure changed
          */
         buttonA.setOnButtonEventListener { button: Button, b: Boolean ->
             stateButtonA = b
@@ -115,6 +114,9 @@ class MainActivity : RainbowHatBlocklyBaseActivity() {
         temperatureSensor.setMode(Bmx280.MODE_NORMAL)
 
         buzzer = RainbowHat.openPiezo()
+
+        ledStrip = RainbowHat.openLedStrip()
+        ledStrip.brightness = Apa102.MAX_BRIGHTNESS
     }
 
     override fun onDestroy() {
@@ -131,6 +133,7 @@ class MainActivity : RainbowHatBlocklyBaseActivity() {
         alphanumericDisplay.close()
         temperatureSensor.close()
         buzzer.close()
+        ledStrip.close()
     }
 
     override fun getCodeGenerationCallback(): CodeGenerationRequest.CodeGeneratorCallback {

@@ -31,7 +31,7 @@
   ,
   {
     "type": "rainbow_hat_read_button",
-    "message0": "state of %1",
+    "message0": "is %1 pressed",
     "output": "Boolean",
     "args0": [
       {
@@ -73,7 +73,8 @@
   ,
   {
     "type": "rainbow_hat_display_text",
-    "message0": "display %1",
+    "inputsInline": true,
+    "message0": "display %1 on LCD",
     "args0": [
       {
         "type": "input_value",
@@ -102,7 +103,8 @@
   ,
   {
     "type": "rainbow_hat_play",
-    "message0": "play %1",
+    "message0": "play %1 frequency",
+    "inputsInline": true,
     "args0": [
       {
         "type": "input_value",
@@ -118,6 +120,21 @@
   {
     "type": "rainbow_hat_stop_playing",
     "message0": "stop playing",
+    "previousStatement": "Action",
+    "nextStatement": "Action",
+    "colour": 160
+  }
+,
+  {
+    "type": "rainbow_hat_write_led_strip",
+    "message0": "display colors %1",
+    "args0": [
+      {
+        "type": "input_value",
+        "name": "VALUE",
+        "check": "Array"
+      }
+    ],
     "previousStatement": "Action",
     "nextStatement": "Action",
     "colour": 160
