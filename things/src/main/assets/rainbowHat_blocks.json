@@ -78,7 +78,7 @@
       {
         "type": "input_value",
         "name": "VALUE",
-        "check": "String"
+        "check": ["String", "Float"]
       }
     ],
     "previousStatement": "Action",
