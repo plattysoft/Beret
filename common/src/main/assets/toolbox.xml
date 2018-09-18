@@ -13,6 +13,11 @@
         <block type="rainbow_hat_write_led_strip_array"></block>
         <block type="rainbow_hat_write_led_strip_variables"></block>
     </category>
+    <category name="Flow" colour="#FF0000">
+        <block type="event_program_starts" />
+        <block type="event_repeat_timer" >
+        </block>
+    </category>
     <category name="Logic" colour="#5C81A6">
         <block type="controls_if" />
         <block type="logic_compare" />

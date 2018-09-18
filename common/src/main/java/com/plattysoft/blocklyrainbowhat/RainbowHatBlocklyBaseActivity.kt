@@ -16,11 +16,12 @@ abstract class RainbowHatBlocklyBaseActivity : AbstractBlocklyActivity() {
     override fun getBlockDefinitionsJsonPaths(): MutableList<String> {
         val assetPaths = ArrayList(DefaultBlocks.getAllBlockDefinitions())
         assetPaths.add("rainbowHat_blocks.json")
+        assetPaths.add("events_blocks.json")
         return assetPaths
     }
 
     override fun getGeneratorsJsPaths(): MutableList<String> {
-        return Arrays.asList("generators.js")
+        return Arrays.asList("rainbowHat_generators.js", "events_generators.js")
     }
 
 }
