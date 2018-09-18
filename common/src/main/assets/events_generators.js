@@ -1,7 +1,6 @@
 'use strict';
 
 Blockly.JavaScript['event_program_starts'] = function(block) {
-    var period = block.getFieldValue('PERIOD')
     var nextCode = Blockly.JavaScript.statementToCode(block, 'DO');
     return 'function init() {\n' +
                 nextCode+'\n' +
@@ -10,10 +9,11 @@ Blockly.JavaScript['event_program_starts'] = function(block) {
 };
 
 Blockly.JavaScript['event_repeat_timer'] = function(block) {
-    var period = block.getFieldValue('PERIOD')
+    var period = Blockly.JavaScript.valueToCode(block, 'PERIOD', Blockly.JavaScript.ORDER_FUNCTION_CALL) || 500
+
     var nextCode = Blockly.JavaScript.statementToCode(block, 'DO');
-    return "function myFunction() {"+
-                nextCode+
-            "}"+
+    return "function myFunction() {\n"+
+                nextCode+"\n"+
+            "}\n"+
             "setInterval(myFunction, "+period+");"
 };
