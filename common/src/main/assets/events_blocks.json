@@ -26,4 +26,21 @@
     ],
     "colour": 290
   }
+  ,
+  {
+    "type": "logic_boolean_workaround",
+    "message0": "\u00A0%1",
+    "args0": [
+      {
+        "type": "field_dropdown",
+        "name": "BOOL",
+        "options": [
+          ["true", "TRUE"],
+          ["false", "FALSE"]
+        ]
+      }
+    ],
+    "output": "Boolean",
+    "colour": "210"
+  }
 ]

@@ -57,7 +57,7 @@
         <block type="logic_compare" />
         <block type="logic_operation" />
         <block type="logic_negate" />
-        <block type="logic_boolean" />
+        <block type="logic_boolean_workaround" />
     </category>
     <category name="Text" colour="#5CA68D">
         <block type="text">

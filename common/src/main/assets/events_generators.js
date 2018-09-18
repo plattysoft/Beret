@@ -17,3 +17,8 @@ Blockly.JavaScript['event_repeat_timer'] = function(block) {
             "}\n"+
             "setInterval(myFunction, "+period+");"
 };
+
+Blockly.JavaScript['logic_boolean_workaround'] = function(block) {
+    var code = (block.getFieldValue('BOOL') == 'TRUE') ? 'true' : 'false';
+    return [code, Blockly.JavaScript.ORDER_ATOMIC];
+};
