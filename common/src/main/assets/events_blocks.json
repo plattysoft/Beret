@@ -11,7 +11,7 @@
   ,
   {
     "type": "event_repeat_timer",
-    "message0": "each %1 milliseconds",
+    "message0": "repeat every %1 milliseconds",
     "inputsInline": true,
     "args0": [
       {
