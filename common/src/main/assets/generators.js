@@ -62,12 +62,12 @@ Blockly.JavaScript['rainbow_hat_set_led_value'] = function(block) {
 
 Blockly.JavaScript['rainbow_hat_display_text'] = function(block) {
     var text = Blockly.JavaScript.valueToCode(block, 'VALUE', Blockly.JavaScript.ORDER_FUNCTION_CALL) || "''"
-    return 'AlphanumericDisplay.displayText('+text+');';
+    return 'AlphanumericDisplay.displayText('+text+');\n';
 };
 
 Blockly.JavaScript['rainbow_hat_display_number'] = function(block) {
     var number = Blockly.JavaScript.valueToCode(block, 'VALUE', Blockly.JavaScript.ORDER_FUNCTION_CALL) || 0.0
-    return 'AlphanumericDisplay.displayNumber('+number+');';
+    return 'AlphanumericDisplay.displayNumber('+number+');\n';
 };
 
 Blockly.JavaScript['rainbow_hat_read_temperature'] = function(block) {
