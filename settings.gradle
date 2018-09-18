@@ -1,1 +1,1 @@
-include ':things'
+include ':things', ':common', ':mobile'
