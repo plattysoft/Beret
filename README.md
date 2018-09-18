@@ -8,7 +8,7 @@ The list of currently available blocks for the Rainbow HAT is:
 
 - when [Button] is [pressed | released | changed]
 - state of [Button] : Boolean
-- Set [Red | Green | Blue] led to [Boolean]
+- set [Red | Green | Blue] led to [Boolean]
 - display text [text]
 - display number [number]
 - temperature : Float
@@ -17,8 +17,17 @@ The list of currently available blocks for the Rainbow HAT is:
 - stop playing 
 - display colors [array of colors]
 - display colors [array of colors as insets]
+- display colors [list]
 
-Missing control for the RGB LED Strip (WIP)
+Other functional blocks:
+
+- when program starts
+- repeat every [Number] milliseconds
+
+Considered for the future:
+
+- Servo controls
+- All the API methods from the components
 
 # Code Samples
 
