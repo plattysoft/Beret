@@ -6,7 +6,7 @@
     "args1": [
       {"type": "input_statement", "name": "DO"}
     ],
-    "colour": 290
+    "colour": 65
   }
   ,
   {
@@ -24,7 +24,7 @@
     "args1": [
       {"type": "input_statement", "name": "DO"}
     ],
-    "colour": 290
+    "colour": 65
   }
   ,
   {

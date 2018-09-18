@@ -13,10 +13,9 @@
         <block type="rainbow_hat_write_led_strip_array"></block>
         <block type="rainbow_hat_write_led_strip_variables"></block>
     </category>
-    <category name="Flow" colour="#FF0000">
+    <category name="Control">
         <block type="event_program_starts" />
-        <block type="event_repeat_timer" >
-        </block>
+        <block type="event_repeat_timer" />
     </category>
     <category name="Loops" colour="#5CA65C">
         <block type="controls_repeat_ext">
