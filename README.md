@@ -35,6 +35,8 @@ TODO: Add a few images with code examples
 
 # Future Work
 
+- Add animation to "compile" or "load" using the Rainbow HAT
+- Tweak Android UI icons and feedback
 - Allow multiple entries to an event
 - Add a companion app and allow to deploy code from the companion app (i.e. running on a tablet)
 - Support for Servos via the PWM output
