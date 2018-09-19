@@ -3,6 +3,7 @@ package com.plattysoft.blocklyrainbowhat
 import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
+import android.view.MenuItem
 import android.webkit.JavascriptInterface
 import android.webkit.WebView
 import com.google.android.things.contrib.driver.apa102.Apa102
@@ -12,6 +13,7 @@ import com.google.android.things.contrib.driver.ht16k33.AlphanumericDisplay
 import com.google.android.things.contrib.driver.pwmspeaker.Speaker
 import com.google.android.things.contrib.driver.rainbowhat.RainbowHat
 import com.google.android.things.pio.Gpio
+import com.google.blockly.android.AbstractBlocklyActivity
 import com.google.blockly.android.codegen.CodeGenerationRequest
 
 private val TAG = MainActivity::class.java.simpleName
@@ -55,6 +57,7 @@ class MainActivity : RainbowHatBlocklyBaseActivity() {
          * The communication from the app towards the WebApp includes the information based on events
          * - Button A, B or C pressed
          */
+        // TODO: This code should be run on JavaScript
         buttonA.setOnButtonEventListener { button: Button, b: Boolean ->
             stateButtonA = b
             if (b) {
@@ -85,7 +88,6 @@ class MainActivity : RainbowHatBlocklyBaseActivity() {
             }
             webView.evaluateJavascript("javascript: onButtonCChanged();",null)
         }
-        webView.loadUrl("file:///android_asset/index.html");
     }
 
     private fun loadProgram(program: String) {
@@ -119,7 +121,7 @@ class MainActivity : RainbowHatBlocklyBaseActivity() {
         ledStrip = RainbowHat.openLedStrip()
         ledStrip.direction = Apa102.Direction.REVERSED
         ledStrip.brightness = 31
-        val colors = intArrayOf(Color.RED, Color.TRANSPARENT, Color.TRANSPARENT, Color.TRANSPARENT, Color.TRANSPARENT, Color.TRANSPARENT, Color.TRANSPARENT)
+        val colors = intArrayOf(Color.RED)
         ledStrip.write(colors)
     }
 
@@ -149,6 +151,42 @@ class MainActivity : RainbowHatBlocklyBaseActivity() {
     override fun onInitBlankWorkspace() {
         // Initialize available variable names.
         controller.addVariable("item")
+    }
+
+    override fun getActionBarMenuResId(): Int {
+        return R.menu.blockly_default_actionbar
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        val id = item.getItemId()
+
+        if (id == R.id.action_run) {
+            if (controller.workspace.hasBlocks()) {
+                cleanRainbowHatState()
+                onRunCode()
+            }
+            return true
+        }
+
+        return super.onOptionsItemSelected(item)
+    }
+
+    private fun cleanRainbowHatState() {
+        redLed.value = false
+        greenLed.value = false
+        blueLed.value = false
+        alphanumericDisplay.clear()
+        ledStrip.write(intArrayOf(
+                Color.TRANSPARENT,
+                Color.TRANSPARENT,
+                Color.TRANSPARENT,
+                Color.TRANSPARENT,
+                Color.TRANSPARENT,
+                Color.TRANSPARENT,
+                Color.TRANSPARENT))
     }
 }
 

@@ -15,6 +15,13 @@ Blockly.JavaScript['event_repeat_timer'] = function(block) {
     return "setInterval(() => {\n"+nextCode+"\n}, "+period+");"
 };
 
+Blockly.JavaScript['event_wait'] = function(block) {
+    var timemout = Blockly.JavaScript.valueToCode(block, 'TIMEOUT', Blockly.JavaScript.ORDER_FUNCTION_CALL) || 500
+
+    var nextCode = Blockly.JavaScript.statementToCode(block, 'DO');
+    return "setTimeout(() => {\n"+nextCode+"\n}, "+timemout+");"
+};
+
 Blockly.JavaScript['logic_boolean_workaround'] = function(block) {
     var code = (block.getFieldValue('BOOL') == 'TRUE') ? 'true' : 'false';
     return [code, Blockly.JavaScript.ORDER_ATOMIC];
