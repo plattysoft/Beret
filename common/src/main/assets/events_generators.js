@@ -12,10 +12,7 @@ Blockly.JavaScript['event_repeat_timer'] = function(block) {
     var period = Blockly.JavaScript.valueToCode(block, 'PERIOD', Blockly.JavaScript.ORDER_FUNCTION_CALL) || 500
 
     var nextCode = Blockly.JavaScript.statementToCode(block, 'DO');
-    return "function myFunction() {\n"+
-                nextCode+"\n"+
-            "}\n"+
-            "setInterval(myFunction, "+period+");"
+    return "setInterval(() => {\n"+nextCode+"\n}, "+period+");"
 };
 
 Blockly.JavaScript['logic_boolean_workaround'] = function(block) {

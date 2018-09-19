@@ -39,6 +39,7 @@ TODO: Add a few images with code examples
 - Tweak Android UI icons and feedback
 - Allow multiple entries to an event
 - Add a companion app and allow to deploy code from the companion app (i.e. running on a tablet)
+- Add Rainbow HAT simulator to the mobile app to "test"
 - Support for Servos via the PWM output
 - Support for selected I2C or SPI peripherals (i.e. LED Matrix)
 
