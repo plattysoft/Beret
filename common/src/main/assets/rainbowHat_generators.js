@@ -121,7 +121,7 @@ Blockly.JavaScript['rainbow_hat_write_led_strip'] = function(block) {
 Blockly.JavaScript['rainbow_hat_write_led_strip_array'] = function(block) {
     var colorsArray = Blockly.JavaScript.valueToCode(block, 'COLORS', Blockly.JavaScript.ORDER_FUNCTION_CALL) || "[]";
     return  '{\n'+
-            'var colors = [];\n'+
+            'let colors = [];\n'+
             'for (let i = 0; i < '+colorsArray+'.length; i++) {\n'+
             '   colors[i] = parseInt('+colorsArray+'[i].replace(\"#\",\"0x\"));\n'+
             '}\n'+
