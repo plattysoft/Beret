@@ -24,11 +24,7 @@ Other functional blocks:
 
 - when program starts
 - repeat every [Number] milliseconds
-
-Considered for the future:
-
-- Servo controls
-- All the API methods from the components
+- wait [Number] milliseconds
 
 # Code Samples
 
@@ -42,6 +38,7 @@ TODO: Add a few images with code examples
 - Add a companion app and allow to deploy code from the companion app (i.e. running on a tablet)
 - Add Rainbow HAT simulator to the mobile app to "test"
 - Support for Servos via the PWM output
+- All the API methods from the components as blocks
 - Support for selected I2C or SPI peripherals (i.e. LED Matrix)
 - Consider using Rhino instead of a WebView to execute the generated JavaScript
 
