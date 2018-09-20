@@ -8,12 +8,13 @@ The list of currently available blocks for the Rainbow HAT is:
 
 - when [Button] is [pressed | released | changed]
 - state of [Button] : Boolean
-- set [Red | Green | Blue] led to [Boolean]
+- set [Red | Green | Blue] LED to [Boolean]
+- state of [Red | Green | Blue] LED : Boolean
 - display text [text]
 - display number [number]
 - temperature : Float
 - pressure : Float
-- play frequency [Number]
+- play frequency [Number] Hz
 - stop playing 
 - display colors [array of colors]
 - display colors [array of colors as insets]
@@ -42,6 +43,7 @@ TODO: Add a few images with code examples
 - Add Rainbow HAT simulator to the mobile app to "test"
 - Support for Servos via the PWM output
 - Support for selected I2C or SPI peripherals (i.e. LED Matrix)
+- Consider using Rhino instead of a WebView to execute the generated JavaScript
 
 # References
 

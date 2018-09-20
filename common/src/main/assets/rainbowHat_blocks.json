@@ -72,6 +72,24 @@
   }
   ,
   {
+    "type": "rainbow_hat_read_led",
+    "message0": "state of %1 LED",
+    "output": "Boolean",
+    "args0": [
+      {
+        "type": "field_dropdown",
+        "name": "LED",
+        "options": [
+          [ "Red", "LED_RED" ],
+          [ "Green", "LED_GREEN" ],
+          [ "Blue", "LED_BLUE" ]
+        ]
+      }
+    ],
+    "colour": 290
+  }
+  ,
+  {
     "type": "rainbow_hat_display_text",
     "inputsInline": true,
     "message0": "display text %1 on LCD",

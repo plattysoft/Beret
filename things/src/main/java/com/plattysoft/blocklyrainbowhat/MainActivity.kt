@@ -207,6 +207,21 @@ class WebAppInterface(val mainActivity: MainActivity) {
     }
 
     @JavascriptInterface
+    fun getStateLedRed(): Boolean{
+        return mainActivity.redLed.value
+    }
+
+    @JavascriptInterface
+    fun getStateGreenRed(): Boolean{
+        return mainActivity.greenLed.value
+    }
+
+    @JavascriptInterface
+    fun getStateLedBlue(): Boolean{
+        return mainActivity.blueLed.value
+    }
+
+    @JavascriptInterface
     fun getStateButtonA(): Boolean {
         return mainActivity.stateButtonA
     }

@@ -46,6 +46,22 @@ var button = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('BUTTON'
     return ["Android.getStateButton"+buttonName+"()", Blockly.JavaScript.ORDER_NONE];
 };
 
+Blockly.JavaScript['rainbow_hat_read_led'] = function(block) {
+    var led = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('LED'), Blockly.Variables.NAME_TYPE);
+    var ledName = 'Red';
+    if (led == "LED_RED") {
+        ledName = 'Red';
+    }
+    else if (led == "LED_GREEN") {
+        ledName = 'Green;
+    }
+    else {
+        ledName = 'Blue';
+    }
+    return ["Android.getStateLed"+ledName+"()", Blockly.JavaScript.ORDER_NONE];
+};
+
+
 Blockly.JavaScript['rainbow_hat_set_led_value'] = function(block) {
     var led = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('LED'), Blockly.Variables.NAME_TYPE);
     var pressed = Blockly.JavaScript.valueToCode(block, 'VALUE', Blockly.JavaScript.ORDER_FUNCTION_CALL) || 'true'
