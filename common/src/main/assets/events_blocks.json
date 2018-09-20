@@ -26,6 +26,22 @@
     ],
     "colour": 65
   }
+   ,
+  {
+    "type": "event_wait",
+    "message0": "wait %1 milliseconds",
+    "inputsInline": true,
+    "args0": [
+      {
+        "type": "input_value",
+        "name": "TIMEOUT",
+        "check": "Number"
+      }
+    ],
+    "previousStatement": "Action",
+    "nextStatement": "Action",
+    "colour": 65
+  }
   ,
   {
     "type": "logic_boolean_workaround",

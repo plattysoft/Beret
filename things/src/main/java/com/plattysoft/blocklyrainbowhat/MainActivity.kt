@@ -120,8 +120,8 @@ class MainActivity : RainbowHatBlocklyBaseActivity() {
         ledStrip = RainbowHat.openLedStrip()
         ledStrip.direction = Apa102.Direction.REVERSED
         ledStrip.brightness = 31
-        val colors = intArrayOf(Color.RED)
-        ledStrip.write(colors)
+
+        cleanRainbowHatState()
     }
 
     override fun onDestroy() {

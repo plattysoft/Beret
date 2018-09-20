@@ -1,7 +1,7 @@
 [
   {
     "type": "rainbow_hat_button_action",
-    "message0": "when %1 is %2",
+    "message0": "\ud83c\udfa9  when %1 is %2",
     "args0": [
       {
         "type": "field_dropdown",

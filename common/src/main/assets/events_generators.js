@@ -16,10 +16,14 @@ Blockly.JavaScript['event_repeat_timer'] = function(block) {
 };
 
 Blockly.JavaScript['event_wait'] = function(block) {
-    var timemout = Blockly.JavaScript.valueToCode(block, 'TIMEOUT', Blockly.JavaScript.ORDER_FUNCTION_CALL) || 500
-
-    var nextCode = Blockly.JavaScript.statementToCode(block, 'DO');
-    return "setTimeout(() => {\n"+nextCode+"\n}, "+timemout+");"
+    // Terrible implementation of wait for the moment
+    var timeout = Blockly.JavaScript.valueToCode(block, 'TIMEOUT', Blockly.JavaScript.ORDER_FUNCTION_CALL) || 500
+    return  "var d = Date.now();\n"+
+            "var d2 = Date.now();\n"+
+            "do {\n"+
+                "\td2 = Date.now();\n"+
+             "}\n"+
+            "while(d2-d < "+timeout+");"
 };
 
 Blockly.JavaScript['logic_boolean_workaround'] = function(block) {
