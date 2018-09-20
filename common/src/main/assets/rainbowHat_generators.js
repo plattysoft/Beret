@@ -32,7 +32,7 @@ Blockly.JavaScript['rainbow_hat_button_action'] = function(block) {
 };
 
 Blockly.JavaScript['rainbow_hat_read_button'] = function(block) {
-var button = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('BUTTON'), Blockly.Variables.NAME_TYPE);
+    var button = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('BUTTON'), Blockly.Variables.NAME_TYPE);
     var buttonName = 'A';
     if (button == "BUTTON_A") {
         buttonName = 'A';
@@ -53,7 +53,7 @@ Blockly.JavaScript['rainbow_hat_read_led'] = function(block) {
         ledName = 'Red';
     }
     else if (led == "LED_GREEN") {
-        ledName = 'Green;
+        ledName = 'Green';
     }
     else {
         ledName = 'Blue';

@@ -13,7 +13,6 @@ import com.google.android.things.contrib.driver.ht16k33.AlphanumericDisplay
 import com.google.android.things.contrib.driver.pwmspeaker.Speaker
 import com.google.android.things.contrib.driver.rainbowhat.RainbowHat
 import com.google.android.things.pio.Gpio
-import com.google.blockly.android.AbstractBlocklyActivity
 import com.google.blockly.android.codegen.CodeGenerationRequest
 
 private val TAG = MainActivity::class.java.simpleName
@@ -191,14 +190,7 @@ class MainActivity : RainbowHatBlocklyBaseActivity() {
 }
 
 /**
- * Class that defines all the communication from the WebApp to the Rainbow HAT
- * It gives access to:
- * - Red, Green and Blue LEDs
- * - Read button A, B and C states
- * - Read temperature value
- * - Alphanumeric display
- * - RGB LED Strip
- * - Piezo buzzer
+ * Class that defines all the communication from the WebApp to the LEDs and buttons
  */
 class WebAppInterface(val mainActivity: MainActivity) {
     @JavascriptInterface
@@ -212,7 +204,7 @@ class WebAppInterface(val mainActivity: MainActivity) {
     }
 
     @JavascriptInterface
-    fun getStateGreenRed(): Boolean{
+    fun getStateLedGreen(): Boolean{
         return mainActivity.greenLed.value
     }
 
