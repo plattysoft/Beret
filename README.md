@@ -30,12 +30,15 @@ Other functional blocks:
 
 TODO: Add a few images with code examples
 
-# Future Work
+# Known issues
+- Events are executed in the main thread, if an event takes long to run, new events get queued (button presses)
+- Only one event of each type is allowed at the moment
 
+# Future Work
+- Add a companion app and allow to deploy code from the companion app (i.e. running on a tablet)
 - Add animation to "compile" or "load" using the Rainbow HAT
 - Tweak Android UI icons and feedback
 - Allow multiple entries to an event
-- Add a companion app and allow to deploy code from the companion app (i.e. running on a tablet)
 - Add Rainbow HAT simulator to the mobile app to "test"
 - Support for Servos via the PWM output
 - All the API methods from the components as blocks
@@ -43,7 +46,6 @@ TODO: Add a few images with code examples
 - Consider using Rhino instead of a WebView to execute the generated JavaScript
 
 # References
-
 - [Official Android Things documentation](https://developer.android.com/things/)
 - [Android Things driver for the Rainbow HAT](https://github.com/androidthings/contrib-drivers/tree/master/rainbowhat)
 - [Blockly homepage](https://developers.google.com/blockly/)

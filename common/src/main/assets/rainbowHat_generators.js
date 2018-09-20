@@ -104,7 +104,8 @@ Blockly.JavaScript['rainbow_hat_stop_playing'] = function(block) {
 };
 
 Blockly.JavaScript['rainbow_hat_write_led_strip'] = function(block) {
-    return 'var colors = [\n'+
+    return '{\n'+
+            'let colors = [\n'+
             block.getFieldValue('COLOR1').replace('#','0x')+',\n'+
             block.getFieldValue('COLOR2').replace('#','0x')+',\n'+
             block.getFieldValue('COLOR3').replace('#','0x')+',\n'+
@@ -113,7 +114,8 @@ Blockly.JavaScript['rainbow_hat_write_led_strip'] = function(block) {
             block.getFieldValue('COLOR6').replace('#','0x')+',\n'+
             block.getFieldValue('COLOR7').replace('#','0x')+'\n'+
             '];\n'+
-            'Apa102.write(colors);';
+            'Apa102.write(colors);\n'+
+            '}';
 };
 
 Blockly.JavaScript['rainbow_hat_write_led_strip_array'] = function(block) {
