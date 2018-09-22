@@ -104,6 +104,7 @@ class MainActivity : RainbowHatBlocklyBaseActivity() {
         Log.d("Program:", program)
         val tagProgram = "<script language=\"JavaScript\">\n $program </script>"
         runOnUiThread{
+            cleanRainbowHatState()
             webView.loadData(tagProgram, "text/html", "UTF-8")
         }
     }
@@ -177,7 +178,6 @@ class MainActivity : RainbowHatBlocklyBaseActivity() {
 
         if (id == R.id.action_run) {
             if (controller.workspace.hasBlocks()) {
-                cleanRainbowHatState()
                 onRunCode()
             }
             return true

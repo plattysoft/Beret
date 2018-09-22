@@ -2,6 +2,8 @@
 
 A project to program the Rainbow HAT on Android Things on the device using Blockly (visual language that is the base of scratch)
 
+You can write the code directly on the Android Things device, or you can write it on an Android phone or tablet and send it over using Nearby
+
 # Installing
 
 You need to have an Android Things developer kit with at least version 1.0 of Android Things installed.
@@ -45,7 +47,8 @@ TODO: Add a few images with code examples
 - Only one event of each type is allowed at the moment
 
 # Future Work
-- Add a companion app and allow to deploy code from the companion app (i.e. running on a tablet)
+- Add a reset key combo to the app, to stop the JS and restart advertising
+- Improve companion app
 - Add animation to "compile" or "load" using the Rainbow HAT
 - Tweak Android UI icons and feedback
 - Allow multiple entries to an event
