@@ -10,7 +10,7 @@ class MainActivity : RainbowHatBlocklyBaseActivity() {
 
     companion object {
         private const val NICKNAME = "Remote Editor" // This could be the device ID
-        private val TAG = MainActivity::class.simpleName
+        private val TAG = MainActivity::class.java.simpleName
     }
 
     lateinit var nearbyConnection : ConnectionsClient
