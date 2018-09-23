@@ -93,6 +93,8 @@ class NearbyWrapper (context: Context){
                 .addOnFailureListener {
                     listener?.onStartDiscoverFailure(it)
                     Log.e(TAG, "startDiscovery: onFailure: "+it.localizedMessage)
+                    // Just in case if the error is about already discovering
+                    nearbyConnection.stopDiscovery()
                 }
                 .addOnSuccessListener {
                     listener?.onStartDiscoverSuccess()
@@ -108,6 +110,7 @@ class NearbyWrapper (context: Context){
         if (connectedEndpoint != null) {
             nearbyConnection.disconnectFromEndpoint(connectedEndpoint!!)
         }
+        nearbyConnection.stopDiscovery()
         startDiscovery()
     }
 }
