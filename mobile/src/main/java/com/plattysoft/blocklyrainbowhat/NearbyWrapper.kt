@@ -23,7 +23,7 @@ class NearbyWrapper (context: Context){
 
     private val endpointDiscoveryCallback = object : EndpointDiscoveryCallback() {
         override fun onEndpointFound(endpointId: String, discoveredEndpointInfo: DiscoveredEndpointInfo) {
-            Log.e(TAG, "onEndpointFound: start: "+endpointId)
+            Log.d(TAG, "onEndpointFound: start: "+endpointId)
             listener?.onEndpointFound(endpointId)
             connectToEndpoint(endpointId)
             nearbyConnection.stopDiscovery()
@@ -38,9 +38,9 @@ class NearbyWrapper (context: Context){
             listener?.onConnectionResult(endpointId, result)
 
             if (result.status.statusCode == ConnectionsStatusCodes.STATUS_OK) {
-                Log.e(TAG, "onConnectionResult: STATUS_OK")
+                Log.d(TAG, "onConnectionResult: STATUS_OK")
                 connectedEndpoint = endpointId
-                Log.e(TAG, "sendPayload: start")
+                Log.d(TAG, "sendPayload: start")
                 nearbyConnection.sendPayload(connectedEndpoint!!, Payload.fromBytes(currentProgram.toByteArray()))
             }
         }
@@ -64,7 +64,7 @@ class NearbyWrapper (context: Context){
 
             // When we are done sending the payload, we disconnect and stop discovering
             if (p1.status == PayloadTransferUpdate.Status.SUCCESS) {
-                Log.e(TAG, "onPayloadTransferUpdate: SUCCESS")
+                Log.d(TAG, "onPayloadTransferUpdate: SUCCESS")
 
                 if (connectedEndpoint != null) {
                     nearbyConnection.disconnectFromEndpoint(connectedEndpoint!!)
@@ -75,7 +75,7 @@ class NearbyWrapper (context: Context){
     }
 
     private fun connectToEndpoint(endpointId: String) {
-        Log.e(TAG, "connectToEndpoint: start")
+        Log.d(TAG, "connectToEndpoint: start")
 
         nearbyConnection.requestConnection(
                 NICKNAME,
@@ -84,7 +84,7 @@ class NearbyWrapper (context: Context){
     }
 
     private fun startDiscovery() {
-        Log.e(TAG, "startDiscovery: start")
+        Log.d(TAG, "startDiscovery: start")
 
         nearbyConnection.startDiscovery(
                 RainbowHatBlocklyBaseActivity.SERVICE_ID,
@@ -92,18 +92,18 @@ class NearbyWrapper (context: Context){
                 DiscoveryOptions.Builder().setStrategy(RainbowHatBlocklyBaseActivity.STRATEGY).build())
                 .addOnFailureListener {
                     listener?.onStartDiscoverFailure(it)
-                    Log.e(TAG, "startDiscovery: onFailure: "+it.localizedMessage)
+                    Log.d(TAG, "startDiscovery: onFailure: "+it.localizedMessage)
                     // Just in case if the error is about already discovering
                     nearbyConnection.stopDiscovery()
                 }
                 .addOnSuccessListener {
                     listener?.onStartDiscoverSuccess()
-                    Log.e(TAG, "startDiscovery: Discovering...")
+                    Log.d(TAG, "startDiscovery: Discovering...")
                 }
     }
 
     fun sendProgram(program: String) {
-        Log.e(TAG, "sendProgram: start")
+        Log.d(TAG, "sendProgram: start")
 
         currentProgram = program
         // We only send them if we are in a good state
