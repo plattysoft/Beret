@@ -41,6 +41,13 @@ Other functional blocks:
 # Code Samples
 
 TODO: Add a few images with code examples
+- Blink a LED
+- Synchronize the LEDs with the buttons
+- Three Tone Piano
+- Display current temperature
+- Knight Rider
+- Control servo via Rainbow HAT
+- Simon says game?
 
 # Known issues
 - Button drivers are not processing 2 buttons pressed at the same time: Move to Button Input Drivers
