@@ -19,9 +19,12 @@ class NearbyWrapper (context: Context){
 
     private var connectedEndpoint: String? = null
 
+    var listener: ConnectionListener? = null
+
     private val endpointDiscoveryCallback = object : EndpointDiscoveryCallback() {
         override fun onEndpointFound(endpointId: String, discoveredEndpointInfo: DiscoveredEndpointInfo) {
             Log.e(TAG, "onEndpointFound: start: "+endpointId)
+            listener?.onEndpointFound(endpointId)
             connectToEndpoint(endpointId)
             nearbyConnection.stopDiscovery()
         }
@@ -32,6 +35,8 @@ class NearbyWrapper (context: Context){
 
     private val connectionLifecycleCallback = object : ConnectionLifecycleCallback(){
         override fun onConnectionResult(endpointId: String, result: ConnectionResolution) {
+            listener?.onConnectionResult(endpointId, result)
+
             if (result.status.statusCode == ConnectionsStatusCodes.STATUS_OK) {
                 Log.e(TAG, "onConnectionResult: STATUS_OK")
                 connectedEndpoint = endpointId
@@ -55,6 +60,8 @@ class NearbyWrapper (context: Context){
         }
 
         override fun onPayloadTransferUpdate(p0: String, p1: PayloadTransferUpdate) {
+            listener?.onPayloadTransferUpdate(p1)
+
             // When we are done sending the payload, we disconnect and stop discovering
             if (p1.status == PayloadTransferUpdate.Status.SUCCESS) {
                 Log.e(TAG, "onPayloadTransferUpdate: SUCCESS")
@@ -84,9 +91,11 @@ class NearbyWrapper (context: Context){
                 endpointDiscoveryCallback,
                 DiscoveryOptions.Builder().setStrategy(RainbowHatBlocklyBaseActivity.STRATEGY).build())
                 .addOnFailureListener {
+                    listener?.onStartDiscoverFailure(it)
                     Log.e(TAG, "startDiscovery: onFailure: "+it.localizedMessage)
                 }
                 .addOnSuccessListener {
+                    listener?.onStartDiscoverSuccess()
                     Log.e(TAG, "startDiscovery: Discovering...")
                 }
     }
