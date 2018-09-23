@@ -6,9 +6,6 @@ import android.util.Log
 import android.view.MenuItem
 import android.webkit.JavascriptInterface
 import android.webkit.WebView
-import com.google.android.gms.nearby.Nearby
-import com.google.android.gms.nearby.connection.*
-import com.google.android.gms.nearby.connection.ConnectionsStatusCodes.STATUS_OK
 import com.google.android.things.contrib.driver.apa102.Apa102
 import com.google.android.things.contrib.driver.bmx280.Bmx280
 import com.google.android.things.contrib.driver.button.Button
@@ -18,13 +15,7 @@ import com.google.android.things.contrib.driver.rainbowhat.RainbowHat
 import com.google.android.things.pio.Gpio
 import com.google.blockly.android.codegen.CodeGenerationRequest
 
-private val TAG = MainActivity::class.java.simpleName
-
-class MainActivity : RainbowHatBlocklyBaseActivity() {
-
-    companion object {
-        private const val NICKNAME = "IoT Host"
-    }
+class MainActivity : RainbowHatBlocklyBaseActivity(), NearbyIotWrapper.RemoteEditorListener {
 
     lateinit var redLed: Gpio
     lateinit var greenLed: Gpio
@@ -45,16 +36,19 @@ class MainActivity : RainbowHatBlocklyBaseActivity() {
 
     lateinit var webView: WebView
 
+    lateinit var nearbyIotWrapper: NearbyIotWrapper
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        nearbyConnections = Nearby.getConnectionsClient(this)
-
-        startAdvertising()
+        nearbyIotWrapper = NearbyIotWrapper(this, this)
 
         initRainbowHat()
 
         webView = WebView(this)
+        if (BuildConfig.DEBUG) {
+            WebView.setWebContentsDebuggingEnabled(true);
+        }
 
         webView.settings.javaScriptEnabled = true
         webView.addJavascriptInterface(WebAppInterface(this), "Android")
@@ -104,6 +98,8 @@ class MainActivity : RainbowHatBlocklyBaseActivity() {
         Log.d("Program:", program)
         val tagProgram = "<script language=\"JavaScript\">\n $program </script>"
         runOnUiThread{
+            // Clean state
+            webView.loadUrl("about:blank")
             cleanRainbowHatState()
             webView.loadData(tagProgram, "text/html", "UTF-8")
         }
@@ -152,7 +148,11 @@ class MainActivity : RainbowHatBlocklyBaseActivity() {
         buzzer.close()
         ledStrip.close()
 
-        nearbyConnections.stopAdvertising()
+        nearbyIotWrapper.stop()
+    }
+
+    override fun onProgramReceived(program: String) {
+        loadProgram(program)
     }
 
     override fun getCodeGenerationCallback(): CodeGenerationRequest.CodeGeneratorCallback {
@@ -201,50 +201,7 @@ class MainActivity : RainbowHatBlocklyBaseActivity() {
                 Color.TRANSPARENT))
     }
 
-    private lateinit var nearbyConnections: ConnectionsClient
 
-    private var connectedEndpoint: String? = null
-
-    private fun startAdvertising() {
-        nearbyConnections.startAdvertising(
-                NICKNAME,
-                SERVICE_ID,
-                connectionLifecycleCallback,
-                AdvertisingOptions.Builder().setStrategy(STRATEGY).build())
-                .addOnSuccessListener {
-                    Log.e(TAG, "Advertising...")
-                }
-                .addOnFailureListener {
-                    Log.e(TAG, "onFailure: "+it.localizedMessage)
-                }
-    }
-
-    private val payloadCallback= object: PayloadCallback() {
-        override fun onPayloadReceived(p0: String, p1: Payload) {
-            // I have received a program
-            val program = String(p1.asBytes()!!)
-            loadProgram(program)
-        }
-
-        override fun onPayloadTransferUpdate(p0: String, p1: PayloadTransferUpdate) {
-        }
-    }
-
-    private val connectionLifecycleCallback= object : ConnectionLifecycleCallback (){
-        override fun onConnectionResult(endpointId: String, result: ConnectionResolution) {
-            if (result.status.statusCode == STATUS_OK) {
-                connectedEndpoint = endpointId
-            }
-        }
-        override fun onDisconnected(endpointId: String) {
-            if (endpointId.equals(connectedEndpoint)) {
-                connectedEndpoint = null
-            }
-        }
-        override fun onConnectionInitiated(endpointId: String, connectionInfo: ConnectionInfo) {
-            nearbyConnections.acceptConnection(endpointId, payloadCallback)
-        }
-    }
 }
 
 /**
