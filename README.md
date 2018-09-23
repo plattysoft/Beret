@@ -9,9 +9,10 @@ You can write the code directly on the Android Things device, or you can write i
 You need to have an Android Things developer kit with at least version 1.0 of Android Things installed.
 - Clone the repo
 - Open it on Android Studio
-- Compile and deploy to your Dev Kit
+- Compile and install the things module to your Dev Kit
+- Optionally: Compile and install the mobile module into a phone or tablet to be used as editor
 
-For the version 1.0 onwards I plan to include a compiled .apk and also a system image of Android Things.
+For the version 1.0 onwards I plan to include a compiled .apk and also a system image of Android Things and to publish the editor in Google Play
 
 # Available Blocks
 
@@ -47,6 +48,8 @@ TODO: Add a few images with code examples
 - Only one event of each type is allowed at the moment
 
 # Future Work
+- Dynamic permission request on the mobile module
+- Deploy progress dialog with the option to cancel instead of Toast
 - Add a reset key combo to the app, to stop the JS and restart advertising
 - Improve companion app
 - Add animation to "compile" or "load" using the Rainbow HAT
@@ -58,6 +61,7 @@ TODO: Add a few images with code examples
 - All the API methods from the components as blocks
 - Support for selected I2C or SPI peripherals (i.e. LED Matrix)
 - Consider using Rhino instead of a WebView to execute the generated JavaScript
+- Only allow remote code deploy on Android Things if there is no screen attached
 
 # References
 - [Official Android Things documentation](https://developer.android.com/things/)
