@@ -36,6 +36,9 @@ Other functional blocks:
 
 - when program starts
 - repeat every [Number] milliseconds
+
+Temporary removed due to misbehavior
+
 - wait [Number] milliseconds
 
 # Code Samples
