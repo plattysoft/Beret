@@ -12,11 +12,17 @@ class MainActivity : RainbowHatBlocklyBaseActivity(), NearbyIotWrapper.RemoteEdi
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        nearbyIotWrapper = NearbyIotWrapper(this, this)
-
         executionEnvironment = ThingsExecutionEnvironment(this)
+    }
 
+    override fun onResume() {
+        super.onResume()
+        nearbyIotWrapper = NearbyIotWrapper(this, this)
+    }
+
+    override fun onPause() {
+        super.onPause()
+        nearbyIotWrapper.stop()
     }
 
     private fun loadProgram(program: String) {
@@ -29,10 +35,7 @@ class MainActivity : RainbowHatBlocklyBaseActivity(), NearbyIotWrapper.RemoteEdi
 
     override fun onDestroy() {
         super.onDestroy()
-
         executionEnvironment.close()
-
-        nearbyIotWrapper.stop()
     }
 
     override fun onProgramReceived(program: String) {
