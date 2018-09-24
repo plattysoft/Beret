@@ -8,28 +8,28 @@ import com.google.blockly.android.codegen.CodeGenerationRequest
 class MainActivity : RainbowHatBlocklyBaseActivity(), NearbyIotWrapper.RemoteEditorListener {
 
     lateinit var nearbyIotWrapper: NearbyIotWrapper
-    lateinit var rainbowHatController: RainbowHatController
+    lateinit var executionEnvironment: ThingsExecutionEnvironment
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         nearbyIotWrapper = NearbyIotWrapper(this, this)
 
-        rainbowHatController = RainbowHatController(this)
+        executionEnvironment = ThingsExecutionEnvironment(this)
     }
 
     private fun loadProgram(program: String) {
         Log.d("Program:", program)
         runOnUiThread{
             // Clean state
-            rainbowHatController.executeProgram(program)
+            executionEnvironment.executeProgram(program)
         }
     }
 
     override fun onDestroy() {
         super.onDestroy()
 
-        rainbowHatController.close()
+        executionEnvironment.close()
 
         nearbyIotWrapper.stop()
     }
