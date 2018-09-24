@@ -53,11 +53,7 @@ class NearbyIotWrapper (context: Context, listener: RemoteEditorListener) {
 
     private fun startAdvertising() {
         // Cleanup state
-        if (connectedEndpoint != null) {
-            nearbyConnections.disconnectFromEndpoint(connectedEndpoint!!)
-            connectedEndpoint = null
-        }
-        nearbyConnections.stopAdvertising()
+        stop()
 
         nearbyConnections.startAdvertising(
                 NICKNAME,
@@ -73,6 +69,10 @@ class NearbyIotWrapper (context: Context, listener: RemoteEditorListener) {
     }
 
     fun stop() {
+        if (connectedEndpoint != null) {
+            nearbyConnections.disconnectFromEndpoint(connectedEndpoint!!)
+            connectedEndpoint = null
+        }
         nearbyConnections.stopAdvertising()
     }
 }

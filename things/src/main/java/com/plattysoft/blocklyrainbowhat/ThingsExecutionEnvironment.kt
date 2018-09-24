@@ -37,12 +37,14 @@ class ThingsExecutionEnvironment(private val context: Context) {
 
     private fun tearDownWebView() {
         webView.apply {
+            settings.javaScriptEnabled = false
             removeJavascriptInterface(LEDS_JS_OBJECT)
             removeJavascriptInterface(LCD_JS_OBJECT)
             removeJavascriptInterface(SENSOR_JS_OBJECT)
             removeJavascriptInterface(BUZZER_JS_OBJECT)
             removeJavascriptInterface(LED_STRIP_JS_OBJECT)
             loadUrl("about:blank")
+            destroy()
         }
     }
 

@@ -17,7 +17,7 @@
     <category name="Control">
         <block type="event_program_starts" />
         <block type="event_repeat_timer" />
-        <block type="event_wait" />
+        <!--<block type="event_wait" />-->
     </category>
     <category name="Loops" colour="#5CA65C">
         <block type="controls_repeat_ext">
