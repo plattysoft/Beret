@@ -23,6 +23,7 @@ class ThingsExecutionEnvironment(private val context: Context) {
         if (BuildConfig.DEBUG) {
             WebView.setWebContentsDebuggingEnabled(true);
         }
+        rainbowHatController.cleanRainbowHatState()
     }
 
     fun executeProgram(program: String) {

@@ -16,6 +16,7 @@ class MainActivity : RainbowHatBlocklyBaseActivity(), NearbyIotWrapper.RemoteEdi
         nearbyIotWrapper = NearbyIotWrapper(this, this)
 
         executionEnvironment = ThingsExecutionEnvironment(this)
+
     }
 
     private fun loadProgram(program: String) {
@@ -53,19 +54,19 @@ class MainActivity : RainbowHatBlocklyBaseActivity(), NearbyIotWrapper.RemoteEdi
         return R.menu.blockly_default_actionbar
     }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        val id = item.getItemId()
-
-        if (id == R.id.action_run) {
-            if (controller.workspace.hasBlocks()) {
-                onRunCode()
-            }
-            return true
-        }
-
-        return super.onOptionsItemSelected(item)
-    }
+//    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+//        // Handle action bar item clicks here. The action bar will
+//        // automatically handle clicks on the Home/Up button, so long
+//        // as you specify a parent activity in AndroidManifest.xml.
+//        val id = item.getItemId()
+//
+//        if (id == R.id.action_run) {
+//            if (controller.workspace.hasBlocks()) {
+//                onRunCode()
+//            }
+//            return true
+//        }
+//
+//        return super.onOptionsItemSelected(item)
+//    }
 }
