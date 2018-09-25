@@ -47,31 +47,34 @@ TODO: Add a few images with code examples
 - Blink a LED
 - Synchronize the LEDs with the buttons
 - Three Tone Piano
-- Display current temperature
+- Display current temperature each second
 - Knight Rider
-- Control servo via Rainbow HAT
+- Control servo via Rainbow HAT (future example)
 - Simon says game?
 
-# Known issues
-- Button drivers are not processing 2 buttons pressed at the same time: Move to Button Input Drivers
-- Events are executed in the main thread, if an event takes long to run, new events get queued (button presses)
-- Only one event of each type is allowed at the moment
-
-# Future Work
+# TODO for version 1.0
 - Dynamic permission request on the mobile module
 - Deploy progress dialog with the option to cancel instead of Toast
-- Add a reset key combo to the app, to stop the JS and restart advertising
-- Improve companion app
-- Add animation to "compile" or "load" using the Rainbow HAT
 - Tweak Android UI icons and feedback
+- Compile only completed blocks, ignore "headless"
+
+# Future Work
 - Allow multiple entries to an event
 - Support for multiple save files
+- Add a reset key combo to the app, to stop the JS and restart advertising
+- Add animation to "compile" or "load" using the Rainbow HAT
 - Add Rainbow HAT simulator to the mobile app to "test"
+- Improve companion app
 - Support for Servos via the PWM output
 - All the API methods from the components as blocks
 - Support for selected I2C or SPI peripherals (i.e. LED Matrix)
 - Consider using Rhino instead of a WebView to execute the generated JavaScript
 - Only allow remote code deploy on Android Things if there is no screen attached
+
+# Known issues
+- Button drivers are not processing 2 buttons pressed at the same time: Move to Button Input Drivers
+- Events are executed in the main thread, if an event takes long to run, new events get queued (button presses)
+- Only one event of each type is allowed at the moment
 
 # References
 - [Official Android Things documentation](https://developer.android.com/things/)
