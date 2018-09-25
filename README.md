@@ -1,6 +1,6 @@
 # BlocklyRainbowHat
 
-A project to program the Rainbow HAT on Android Things on the device using Blockly (visual language that is the base of scratch)
+A project to program the Rainbow HAT on Android Things on the device built on Blockly (which is a library from Google for building beginner-friendly block-based programming languages)
 
 You can write the code directly on the Android Things device, or you can write it on an Android phone or tablet and send it over using Nearby
 
