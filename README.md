@@ -56,9 +56,9 @@ TODO: Add a few images with code examples
 - Dynamic permission request on the mobile module
 - Deploy progress dialog with the option to cancel instead of Toast
 - Tweak Android UI icons and feedback
-- Compile only completed blocks, ignore "headless"
 
 # Future Work
+- Compile only completed blocks, ignore "headless"
 - Allow multiple entries to an event
 - Support for multiple save files
 - Add a reset key combo to the app, to stop the JS and restart advertising
