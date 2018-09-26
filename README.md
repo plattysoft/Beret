@@ -52,11 +52,6 @@ TODO: Add a few images with code examples
 - Control servo via Rainbow HAT (future example)
 - Simon says game?
 
-# TODO for version 1.0
-- Dynamic permission request on the mobile module
-- Deploy progress dialog with the option to cancel instead of Toast
-- Tweak Android UI icons and feedback
-
 # Future Work
 - Compile only completed blocks, ignore "headless"
 - Allow multiple entries to an event
