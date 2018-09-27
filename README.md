@@ -43,11 +43,13 @@ Temporary removed due to misbehavior
 
 # Code Samples
 
-TODO: Add a few images with code examples
+This is a list of suggested exercises for beginners. Proper project descriptions in the style of Code Club will be provided soon.
+
 - Blink a LED
 - Synchronize the LEDs with the buttons
 - Three Tone Piano
 - Display current temperature each second
+- Display random array of colors on the LED Strip
 - Knight Rider
 - Control servo via Rainbow HAT (future example)
 - Simon says game?
