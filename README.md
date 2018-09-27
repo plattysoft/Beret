@@ -49,6 +49,7 @@ This is a list of suggested exercises for beginners. Proper project descriptions
 - Synchronize the LEDs with the buttons
 - Three Tone Piano
 - Display current temperature each second
+- Marquee mode on the Alphanumeric display
 - Display random array of colors on the LED Strip
 - Knight Rider
 - Control servo via Rainbow HAT (future example)
