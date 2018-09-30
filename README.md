@@ -1,8 +1,10 @@
-# BlocklyRainbowHat
+# Beret (Formerly BlocklyRainbowHAT)
 
-A project to program the Rainbow HAT on Android Things on the device built on Blockly (which is a library from Google for building beginner-friendly block-based programming languages)
+Beret is an educational project to program the Rainbow HAT on Android Things direcly on the device built on Blockly (which is a library from Google for building beginner-friendly block-based programming languages)
 
 You can write the code directly on the Android Things device, or you can write it on an Android phone or tablet and send it over using Nearby
+
+There are a few similarities between Beret and Micro:bit, both are great tools to introduce coding that interacts with hardware. Beret is intended to be an introduction to Android Things, but you can just use it as it is.
 
 # Installing
 
@@ -18,21 +20,50 @@ For the version 1.0 onwards I plan to include a compiled .apk and also a system 
 
 The list of currently available blocks for the Rainbow HAT is:
 
+## Buttons
+
+![Button blocks](https://github.com/plattysoft/BlocklyRainbowHat/blob/master/button_blocks.png "Button blocks")
+
 - when [Button] is [pressed | released | changed]
 - state of [Button] : Boolean
+
+## LEDs
+
+![LED blocks](https://github.com/plattysoft/BlocklyRainbowHat/blob/master/led_blocks.png "LED blocks")
+
 - set [Red | Green | Blue] LED to [Boolean]
 - state of [Red | Green | Blue] LED : Boolean
+
+## LCD display
+
+![LCD display blocks](https://github.com/plattysoft/BlocklyRainbowHat/blob/master/lcd_blocks.png "LCD display blocks")
+
 - display text [text]
 - display number [number]
+
+## Sensor
+
+![Sensor blocks](https://github.com/plattysoft/BlocklyRainbowHat/blob/master/sensor_blocks.png "Sensor blocks")
+
 - temperature : Float
 - pressure : Float
+
+## Piezo buzzer
+
+![Piezo buzzer blocks](https://github.com/plattysoft/BlocklyRainbowHat/blob/master/buzzer_blocks.png "Piezo buzzer blocks")
+
 - play frequency [Number] Hz
 - stop playing 
+
+## RGB LED Strip
+
+![RGB LED Strip blocks](https://github.com/plattysoft/BlocklyRainbowHat/blob/master/rgb_led_strip_blocks.png "RGB LED Strip blocks")
+
+- display colors [list]
 - display colors [array of colors]
 - display colors [array of colors as insets]
-- display colors [list]
 
-Other functional blocks:
+## Functional blocks (hooks)
 
 - when program starts
 - repeat every [Number] milliseconds
