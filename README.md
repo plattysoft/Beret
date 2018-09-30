@@ -20,42 +20,42 @@ The list of currently available blocks for the Rainbow HAT is:
 
 ## Buttons
 
-(https://github.com/plattysoft/BlocklyRainbowHat/edit/master/button_blocks.png "Button blocks")
+![Button blocks](https://github.com/plattysoft/BlocklyRainbowHat/edit/master/button_blocks.png "Button blocks")
 
 - when [Button] is [pressed | released | changed]
 - state of [Button] : Boolean
 
 ## LEDs
 
-(https://github.com/plattysoft/BlocklyRainbowHat/edit/master/led_blocks.png "LED blocks")
+!(https://github.com/plattysoft/BlocklyRainbowHat/edit/master/led_blocks.png "LED blocks")
 
 - set [Red | Green | Blue] LED to [Boolean]
 - state of [Red | Green | Blue] LED : Boolean
 
 ## LCD display
 
-(https://github.com/plattysoft/BlocklyRainbowHat/edit/master/lcd_blocks.png "LCD display blocks")
+!(https://github.com/plattysoft/BlocklyRainbowHat/edit/master/lcd_blocks.png "LCD display blocks")
 
 - display text [text]
 - display number [number]
 
 ## Sensor
 
-(https://github.com/plattysoft/BlocklyRainbowHat/edit/master/sensor_blocks.png "Sensor blocks")
+!(https://github.com/plattysoft/BlocklyRainbowHat/edit/master/sensor_blocks.png "Sensor blocks")
 
 - temperature : Float
 - pressure : Float
 
 ## Piezo buzzer
 
-(https://github.com/plattysoft/BlocklyRainbowHat/edit/master/buzzer_blocks.png "Piezo buzzer blocks")
+!(https://github.com/plattysoft/BlocklyRainbowHat/edit/master/buzzer_blocks.png "Piezo buzzer blocks")
 
 - play frequency [Number] Hz
 - stop playing 
 
 ## RGB LED Strip
 
-(https://github.com/plattysoft/BlocklyRainbowHat/edit/master/rgb_led_strip_blocks.png "RGB LED Strip blocks")
+!(https://github.com/plattysoft/BlocklyRainbowHat/edit/master/rgb_led_strip_blocks.png "RGB LED Strip blocks")
 
 - display colors [list]
 - display colors [array of colors]
