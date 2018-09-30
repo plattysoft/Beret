@@ -12,6 +12,9 @@ import android.widget.Toast
 import com.google.android.gms.nearby.connection.ConnectionResolution
 import com.google.android.gms.nearby.connection.PayloadTransferUpdate
 import com.google.blockly.android.codegen.CodeGenerationRequest
+import android.app.ProgressDialog
+
+
 
 class MainActivity : RainbowHatBlocklyBaseActivity(), ConnectionListener {
 
