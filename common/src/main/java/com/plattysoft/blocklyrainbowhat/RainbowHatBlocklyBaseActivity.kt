@@ -9,6 +9,7 @@ import android.view.View
 import android.widget.LinearLayout
 import com.google.android.gms.nearby.connection.Strategy
 import com.google.blockly.android.AbstractBlocklyActivity
+import com.google.blockly.android.ui.WorkspaceHelper
 import com.google.blockly.model.DefaultBlocks
 import com.plattysoft.blocklyrainbowhat.common.R
 import java.util.*
@@ -23,13 +24,8 @@ abstract class RainbowHatBlocklyBaseActivity : AbstractBlocklyActivity() {
         val STRATEGY = Strategy.P2P_STAR as Strategy
     }
 
-    override fun onResume() {
-        super.onResume()
-        // Removing them from the layout manually
-        val buttonsLayout = findViewById<LinearLayout>(R.id.blockly_overlay_buttons)
-        buttonsLayout.removeView(findViewById<View>(R.id.blockly_zoom_in_button))
-        buttonsLayout.removeView(findViewById<View>(R.id.blockly_zoom_out_button))
-        buttonsLayout.removeView(findViewById<View>(R.id.blockly_center_view_button))
+    override fun onCreateContentView(containerId: Int): View {
+        return layoutInflater.inflate(R.layout.beret_unified_workspace, null)
     }
 
     override fun getToolboxContentsXmlPath(): String {
@@ -69,19 +65,6 @@ abstract class RainbowHatBlocklyBaseActivity : AbstractBlocklyActivity() {
             controller.zoomOut()
             return true
         }
-//        else if (id == R.id.action_save) {
-//            onSaveWorkspace()
-//            return true
-//        } else if (id == R.id.action_load) {
-//            onLoadWorkspace()
-//            return true
-//        }  else if (id == R.id.action_run) {
-//            if (controller.workspace.hasBlocks()) {
-//                onRunCode()
-//            } else {
-//                Log.i(TAG, "No blocks in workspace. Skipping run request.")
-//            }
-//            return true
         return super.onOptionsItemSelected(item)
     }
 
