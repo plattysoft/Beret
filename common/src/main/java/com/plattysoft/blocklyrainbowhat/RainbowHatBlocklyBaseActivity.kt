@@ -2,7 +2,11 @@ package com.plattysoft.blocklyrainbowhat
 
 import android.app.AlertDialog
 import android.content.DialogInterface
+import android.os.Bundle
+import android.os.PersistableBundle
 import android.view.MenuItem
+import android.view.View
+import android.widget.LinearLayout
 import com.google.android.gms.nearby.connection.Strategy
 import com.google.blockly.android.AbstractBlocklyActivity
 import com.google.blockly.model.DefaultBlocks
@@ -17,6 +21,15 @@ abstract class RainbowHatBlocklyBaseActivity : AbstractBlocklyActivity() {
     companion object {
         const val SERVICE_ID = "com.plattysoft.nearby"
         val STRATEGY = Strategy.P2P_STAR as Strategy
+    }
+
+    override fun onResume() {
+        super.onResume()
+        // Removing them from the layout manually
+        val buttonsLayout = findViewById<LinearLayout>(R.id.blockly_overlay_buttons)
+        buttonsLayout.removeView(findViewById<View>(R.id.blockly_zoom_in_button))
+        buttonsLayout.removeView(findViewById<View>(R.id.blockly_zoom_out_button))
+        buttonsLayout.removeView(findViewById<View>(R.id.blockly_center_view_button))
     }
 
     override fun getToolboxContentsXmlPath(): String {
