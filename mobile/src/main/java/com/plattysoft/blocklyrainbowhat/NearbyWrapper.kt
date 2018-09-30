@@ -107,10 +107,15 @@ class NearbyWrapper (context: Context){
 
         currentProgram = program
         // We only send them if we are in a good state
+        cancelDeploy()
+        startDiscovery()
+    }
+
+    fun cancelDeploy() {
+        // We only send them if we are in a good state
         if (connectedEndpoint != null) {
             nearbyConnection.disconnectFromEndpoint(connectedEndpoint!!)
         }
         nearbyConnection.stopDiscovery()
-        startDiscovery()
     }
 }

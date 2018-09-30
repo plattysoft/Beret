@@ -8,17 +8,23 @@ import android.support.v4.app.ActivityCompat
 import android.support.v4.content.ContextCompat
 import android.support.v7.app.AlertDialog
 import android.util.Log
+import android.view.View
+import android.view.ViewGroup
+import android.widget.Button
+import android.widget.LinearLayout
+import android.widget.TextView
 import android.widget.Toast
+import com.google.android.gms.common.images.ImageRequest
 import com.google.android.gms.nearby.connection.ConnectionResolution
 import com.google.android.gms.nearby.connection.PayloadTransferUpdate
 import com.google.blockly.android.codegen.CodeGenerationRequest
-import android.app.ProgressDialog
-
+import com.google.android.gms.nearby.connection.ConnectionsStatusCodes
 
 
 class MainActivity : RainbowHatBlocklyBaseActivity(), ConnectionListener {
 
     companion object {
+        private val TAG = MainActivity.javaClass.simpleName.toString()
         private const val PERMISSION_REQUEST = 12
     }
 
@@ -33,9 +39,39 @@ class MainActivity : RainbowHatBlocklyBaseActivity(), ConnectionListener {
     private fun loadProgram(program: String) {
         if (checkAndRequestPermissionsIfNeeded()) {
             Log.d("Program", program)
+            showProgress(R.string.preparing_deploy);
             nearbyWrapper.sendProgram(program)
         }
     }
+
+    private fun showProgress(message: Int) {
+        runOnUiThread {
+            // Make the layout visible
+            if (findViewById<LinearLayout>(R.id.deploy_progress) == null) {
+                View.inflate(this, R.layout.deploy_progress, findViewById(android.R.id.content))
+                findViewById<Button>(R.id.progress_cancel).setOnClickListener {
+                    cancelDeploy()
+                    dismissProgress()
+                }
+            }
+            // Set the text tot he parameter passed
+            findViewById<TextView>(R.id.progress_message).setText(message)
+        }
+    }
+
+    private fun cancelDeploy() {
+       nearbyWrapper.cancelDeploy()
+    }
+
+    private fun dismissProgress() {
+        runOnUiThread {
+            // Hide the progress layout
+            if (findViewById<LinearLayout>(R.id.deploy_progress) != null) {
+                findViewById<ViewGroup>(android.R.id.content).removeView(findViewById<LinearLayout>(R.id.deploy_progress))
+            }
+        }
+    }
+
 
     private fun checkAndRequestPermissionsIfNeeded(): Boolean {
         if (isGranted(Manifest.permission.ACCESS_FINE_LOCATION) &&
@@ -106,23 +142,37 @@ class MainActivity : RainbowHatBlocklyBaseActivity(), ConnectionListener {
     }
 
     override fun onStartDiscoverFailure(e: Exception) {
-       Toast.makeText(this, "onStartDiscoverFailure: "+e.localizedMessage, Toast.LENGTH_LONG).show()
+        Toast.makeText(this, "onStartDiscoverFailure: "+e.localizedMessage, Toast.LENGTH_LONG).show()
+        dismissProgress()
     }
 
     override fun onStartDiscoverSuccess() {
-        Toast.makeText(this, "onStartDiscoverSuccess", Toast.LENGTH_LONG).show()
+        showProgress(R.string.device_searching)
+        Log.d(TAG, "onStartDiscoverSuccess")
     }
 
     override fun onEndpointFound(endpointId: String) {
-        Toast.makeText(this, "onEndpointFound: "+endpointId, Toast.LENGTH_LONG).show()
+        showProgress(R.string.device_found_connecting)
     }
 
     override fun onPayloadTransferUpdate(p1: PayloadTransferUpdate) {
-        Toast.makeText(this, "onPayloadTransferUpdate: "+p1.status, Toast.LENGTH_LONG).show()
+        if (p1.status == PayloadTransferUpdate.Status.SUCCESS) {
+            dismissProgress()
+        }
+        if (p1.status == PayloadTransferUpdate.Status.FAILURE) {
+            dismissProgress()
+            Toast.makeText(this, "onPayloadTransferUpdate: "+p1.status, Toast.LENGTH_LONG).show()
+        }
     }
 
     override fun onConnectionResult(endpointId: String, result: ConnectionResolution) {
-        Toast.makeText(this, "onConnectionResult: "+result.status, Toast.LENGTH_LONG).show()
+        if (result.status.statusCode == ConnectionsStatusCodes.STATUS_OK) {
+            showProgress(R.string.sending_program)
+        }
+        if (result.status.statusCode == ConnectionsStatusCodes.STATUS_ERROR) {
+            Toast.makeText(this, "onConnectionResult: "+result.status, Toast.LENGTH_LONG).show()
+            dismissProgress()
+        }
     }
 
 }

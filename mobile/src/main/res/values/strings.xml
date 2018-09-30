@@ -4,4 +4,10 @@
     <string name="permissions_needed">The app needs Location and Storage to deploy code to Android Things</string>
     <string name="ok">OK</string>
     <string name="permissions_needed_error">Can\'t run code, permissions are missing</string>
+    <string name="searching_device">Looking for device...</string>
+    <string name="device_searching">Searching for device...</string>
+    <string name="preparing_deploy">Preparing to deploy...</string>
+    <string name="device_found_connecting">Device found. Connecting...</string>
+    <string name="sending_program">Sending program...</string>
+    <string name="cancel">Cancel</string>
 </resources>
