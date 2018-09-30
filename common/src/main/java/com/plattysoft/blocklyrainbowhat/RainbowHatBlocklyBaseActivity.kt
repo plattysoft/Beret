@@ -61,6 +61,14 @@ abstract class RainbowHatBlocklyBaseActivity : AbstractBlocklyActivity() {
             }
             return true
         }
+        else if (id == R.id.blockly_zoom_in_button) {
+            controller.zoomIn()
+            return true
+        }
+        else if (id == R.id.blockly_zoom_out_button) {
+            controller.zoomOut()
+            return true
+        }
 //        else if (id == R.id.action_save) {
 //            onSaveWorkspace()
 //            return true
