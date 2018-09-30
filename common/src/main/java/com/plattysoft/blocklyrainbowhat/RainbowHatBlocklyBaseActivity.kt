@@ -34,6 +34,10 @@ abstract class RainbowHatBlocklyBaseActivity : AbstractBlocklyActivity() {
         return Arrays.asList("rainbowHat_generators.js", "events_generators.js")
     }
 
+    override fun getActionBarMenuResId(): Int {
+        return R.menu.beret_menu
+    }
+
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         val id = item.itemId
 
@@ -65,13 +69,13 @@ abstract class RainbowHatBlocklyBaseActivity : AbstractBlocklyActivity() {
         AlertDialog.Builder(this)
                 .setMessage(R.string.confirm_clear_workspace_message)
                 .setTitle(R.string.confirm_clear_workspace_title)
-                .setPositiveButton(R.string.yes, { dialogInterface: DialogInterface, i: Int ->
+                .setPositiveButton(R.string.yes) { dialogInterface: DialogInterface, i: Int ->
                     onClearWorkspace()
                     dialogInterface.dismiss()
-                })
-                .setNegativeButton(R.string.no, { dialogInterface: DialogInterface, i: Int ->
+                }
+                .setNegativeButton(R.string.no) { dialogInterface: DialogInterface, i: Int ->
                     dialogInterface.dismiss()
-                })
+                }
                 .create()
                 .show()
     }
