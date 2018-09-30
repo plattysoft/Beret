@@ -1,8 +1,10 @@
-# BlocklyRainbowHat
+# Beret (Formerly BlocklyRainbowHAT)
 
-A project to program the Rainbow HAT on Android Things on the device built on Blockly (which is a library from Google for building beginner-friendly block-based programming languages)
+Beret is an educational project to program the Rainbow HAT on Android Things direcly on the device built on Blockly (which is a library from Google for building beginner-friendly block-based programming languages)
 
 You can write the code directly on the Android Things device, or you can write it on an Android phone or tablet and send it over using Nearby
+
+There are a few similarities between Beret and Micro:bit, both are great tools to introduce coding that interacts with hardware. Beret is intended to be an introduction to Android Things, but you can just use it as it is.
 
 # Installing
 
