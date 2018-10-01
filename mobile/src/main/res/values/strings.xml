@@ -10,4 +10,7 @@
     <string name="device_found_connecting">Device found. Connecting...</string>
     <string name="sending_program">Sending program...</string>
     <string name="cancel">Cancel</string>
+    <string name="connection_error">Connection error</string>
+    <string name="deploy_completed">Deploy completed</string>
+    <string name="transfer_failed">Transfer failed</string>
 </resources>

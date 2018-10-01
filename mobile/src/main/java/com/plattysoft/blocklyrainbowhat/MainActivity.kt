@@ -14,11 +14,11 @@ import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
-import com.google.android.gms.common.images.ImageRequest
 import com.google.android.gms.nearby.connection.ConnectionResolution
 import com.google.android.gms.nearby.connection.PayloadTransferUpdate
 import com.google.blockly.android.codegen.CodeGenerationRequest
 import com.google.android.gms.nearby.connection.ConnectionsStatusCodes
+import java.util.*
 
 
 class MainActivity : RainbowHatBlocklyBaseActivity(), ConnectionListener {
@@ -63,11 +63,21 @@ class MainActivity : RainbowHatBlocklyBaseActivity(), ConnectionListener {
        nearbyWrapper.cancelDeploy()
     }
 
-    private fun dismissProgress() {
+    private fun dismissProgress(message: String? = null) {
         runOnUiThread {
-            // Hide the progress layout
-            if (findViewById<LinearLayout>(R.id.deploy_progress) != null) {
-                findViewById<ViewGroup>(android.R.id.content).removeView(findViewById<LinearLayout>(R.id.deploy_progress))
+            if (message != null) {
+                findViewById<TextView>(R.id.progress_message).setText(message)
+                Timer().schedule(object : TimerTask() {
+                    override fun run() {
+                            dismissProgress()
+                    }
+                }, 2000)
+            }
+            else {
+                // Hide the progress layout
+                if (findViewById<LinearLayout>(R.id.deploy_progress) != null) {
+                    findViewById<ViewGroup>(android.R.id.content).removeView(findViewById<LinearLayout>(R.id.deploy_progress))
+                }
             }
         }
     }
@@ -142,8 +152,8 @@ class MainActivity : RainbowHatBlocklyBaseActivity(), ConnectionListener {
     }
 
     override fun onStartDiscoverFailure(e: Exception) {
-        Toast.makeText(this, "onStartDiscoverFailure: "+e.localizedMessage, Toast.LENGTH_LONG).show()
-        dismissProgress()
+        Log.d(TAG, "onStartDiscoverFailure: "+e.localizedMessage)
+        dismissProgress(e.localizedMessage)
     }
 
     override fun onStartDiscoverSuccess() {
@@ -157,11 +167,11 @@ class MainActivity : RainbowHatBlocklyBaseActivity(), ConnectionListener {
 
     override fun onPayloadTransferUpdate(p1: PayloadTransferUpdate) {
         if (p1.status == PayloadTransferUpdate.Status.SUCCESS) {
-            dismissProgress()
+            dismissProgress(getString(R.string.deploy_completed))
         }
         if (p1.status == PayloadTransferUpdate.Status.FAILURE) {
-            dismissProgress()
-            Toast.makeText(this, "onPayloadTransferUpdate: "+p1.status, Toast.LENGTH_LONG).show()
+            dismissProgress(getString(R.string.transfer_failed))
+            Log.d(TAG, "onPayloadTransferUpdate: "+p1.status)
         }
     }
 
@@ -170,8 +180,8 @@ class MainActivity : RainbowHatBlocklyBaseActivity(), ConnectionListener {
             showProgress(R.string.sending_program)
         }
         if (result.status.statusCode == ConnectionsStatusCodes.STATUS_ERROR) {
-            Toast.makeText(this, "onConnectionResult: "+result.status, Toast.LENGTH_LONG).show()
-            dismissProgress()
+            Log.d(TAG, "onConnectionResult: "+result.status)
+            dismissProgress(result.status.statusMessage)
         }
     }
 
