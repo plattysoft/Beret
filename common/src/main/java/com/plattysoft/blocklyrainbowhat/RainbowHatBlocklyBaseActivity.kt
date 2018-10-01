@@ -7,6 +7,7 @@ import android.os.PersistableBundle
 import android.view.MenuItem
 import android.view.View
 import android.widget.LinearLayout
+import android.widget.Toast
 import com.google.android.gms.nearby.connection.Strategy
 import com.google.blockly.android.AbstractBlocklyActivity
 import com.google.blockly.android.ui.WorkspaceHelper
@@ -63,6 +64,16 @@ abstract class RainbowHatBlocklyBaseActivity : AbstractBlocklyActivity() {
         }
         else if (id == R.id.blockly_zoom_out_button) {
             controller.zoomOut()
+            return true
+        }
+        else if (id == R.id.action_run){
+            if (controller.workspace.hasBlocks()) {
+                onAutosave()
+                onRunCode()
+            }
+            else {
+                Toast.makeText(this, R.string.no_blocks_error, Toast.LENGTH_LONG).show()
+            }
             return true
         }
         return super.onOptionsItemSelected(item)
