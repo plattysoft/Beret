@@ -2,19 +2,23 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:gravity="center_vertical"
     android:layout_gravity="bottom"
-    android:padding="8dp"
-    android:background="#AAAAAA"
+    android:padding="16dp"
+    android:background="@color/colorPrimaryDark"
     android:id="@+id/deploy_progress"
     android:orientation="horizontal" android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
     <ProgressBar
+        android:indeterminateTint="#FFFFFF"
+        android:id="@+id/progress_circular"
         android:indeterminate="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
     <TextView
+        style="@style/TextAppearance.AppCompat.Medium.Inverse"
         android:padding="8dp"
+        android:layout_marginLeft="16dp"
         android:id="@+id/progress_message"
         android:layout_weight="1"
         android:layout_width="match_parent"

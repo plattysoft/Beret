@@ -1,6 +1,7 @@
 package com.plattysoft.blocklyrainbowhat
 
 import android.Manifest
+import android.animation.Animator
 import android.content.DialogInterface
 import android.content.pm.PackageManager
 import android.os.Bundle
@@ -10,10 +11,7 @@ import android.support.v7.app.AlertDialog
 import android.util.Log
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.LinearLayout
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import com.google.android.gms.nearby.connection.ConnectionResolution
 import com.google.android.gms.nearby.connection.PayloadTransferUpdate
 import com.google.blockly.android.codegen.CodeGenerationRequest
@@ -38,10 +36,16 @@ class MainActivity : RainbowHatBlocklyBaseActivity(), ConnectionListener {
 
     private fun loadProgram(program: String) {
         if (checkAndRequestPermissionsIfNeeded()) {
-            Log.d("Program", program)
-            showProgress(R.string.preparing_deploy);
-            nearbyWrapper.sendProgram(program)
+            if (!isDeploying()) {
+                Log.d("Program", program)
+                showProgress(R.string.preparing_deploy);
+                nearbyWrapper.sendProgram(program)
+            }
         }
+    }
+
+    private fun isDeploying(): Boolean {
+        return findViewById<LinearLayout>(R.id.deploy_progress) != null
     }
 
     private fun showProgress(message: Int) {
@@ -66,19 +70,42 @@ class MainActivity : RainbowHatBlocklyBaseActivity(), ConnectionListener {
     private fun dismissProgress(message: String? = null) {
         runOnUiThread {
             if (message != null) {
+                findViewById<ProgressBar>(R.id.progress_circular).visibility = View.INVISIBLE
+                findViewById<Button>(R.id.progress_cancel).visibility = View.GONE
+
                 findViewById<TextView>(R.id.progress_message).setText(message)
                 Timer().schedule(object : TimerTask() {
                     override fun run() {
                             dismissProgress()
                     }
-                }, 2000)
+                }, 1000)
             }
             else {
                 // Hide the progress layout
-                if (findViewById<LinearLayout>(R.id.deploy_progress) != null) {
-                    findViewById<ViewGroup>(android.R.id.content).removeView(findViewById<LinearLayout>(R.id.deploy_progress))
-                }
+                hideLayoutWithAnimation()
             }
+        }
+    }
+
+    private fun hideLayoutWithAnimation() {
+        val progressView = findViewById<LinearLayout>(R.id.deploy_progress)
+        if (progressView != null) {
+            progressView.animate()
+                    .translationYBy(progressView.height.toFloat())
+                    .setDuration(200)
+                    .setListener(object : Animator.AnimatorListener {
+                        override fun onAnimationRepeat(p0: Animator?) {
+                        }
+                        override fun onAnimationEnd(p0: Animator?) {
+                            findViewById<ViewGroup>(android.R.id.content).removeView(progressView)
+                        }
+                        override fun onAnimationCancel(p0: Animator?) {
+                            findViewById<ViewGroup>(android.R.id.content).removeView(progressView)
+                        }
+                        override fun onAnimationStart(p0: Animator?) {
+                        }
+                    })
+                    .start()
         }
     }
 

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Mobile</string>
+    <string name="app_name">Beret - Editor</string>
     <string name="permissions_needed_title">Permissions Needed</string>
     <string name="permissions_needed">The app needs Location and Storage to deploy code to Android Things</string>
     <string name="ok">OK</string>
