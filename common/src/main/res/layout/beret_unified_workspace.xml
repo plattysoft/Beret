@@ -56,9 +56,10 @@
 
         <com.google.blockly.android.ui.TrashCanView
             android:id="@+id/blockly_trash_icon"
+            android:tint="@color/colorAccent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@color/translucent"
-            android:padding="2dp"/>
+            android:padding="4dp"/>
     </LinearLayout>
 </RelativeLayout>
