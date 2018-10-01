@@ -13,4 +13,5 @@
     <string name="connection_error">Connection error</string>
     <string name="deploy_completed">Deploy completed</string>
     <string name="transfer_failed">Transfer failed</string>
+    <string name="already_deploying">Already deploying!</string>
 </resources>

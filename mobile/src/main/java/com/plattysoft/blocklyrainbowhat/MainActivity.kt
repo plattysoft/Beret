@@ -41,6 +41,9 @@ class MainActivity : RainbowHatBlocklyBaseActivity(), ConnectionListener {
                 showProgress(R.string.preparing_deploy);
                 nearbyWrapper.sendProgram(program)
             }
+            else {
+                Toast.makeText(this, R.string.already_deploying, Toast.LENGTH_LONG).show()
+            }
         }
     }
 
