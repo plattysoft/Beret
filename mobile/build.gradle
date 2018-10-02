@@ -5,7 +5,7 @@ android {
     compileSdkVersion 27
 
     defaultConfig {
-        applicationId "com.plattysoft.blocklyrainbowhat"
+        applicationId "com.plattysoft.beret"
         minSdkVersion 24
         targetSdkVersion 27
         versionCode 1
