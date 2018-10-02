@@ -9,18 +9,19 @@ There are a few similarities between Beret and Micro:bit, both are great tools t
 # Installing
 
 You need to have an Android Things developer kit with at least version 1.0 of Android Things installed.
+You can use a monitor, keyboard and mouse connected to your dev kit, or you can use the companion app on a tablet to create your programs.
 You have a few options, I suggest you take the easy way.
 
 ## The Easy Way
 - Install the [Beret things apk](https://github.com/plattysoft/Beret/blob/master/releases/beret-things-1.0.apk) into your Android Things Developer Kit usig adb
-- Install the mobile app in yout tablet or phone via Google Play
+- Optional: Install the mobile app in yout tablet or phone via [Google Play](https://play.google.com/store/apps/details?id=com.plattysoft.beret)
 - You are good to go
 
 ## The Slightly harder way
 - Clone the repo
 - Open it on Android Studio
 - Compile and install the things module to your Dev Kit
-- Compile and install the mobile module into a phone or tablet to be used as editor
+- Optional: Compile and install the mobile module into a phone or tablet to be used as editor
 
 There is a plan to include a system image of Android Things as well so you just need to flash it.
 
