@@ -9,12 +9,20 @@ There are a few similarities between Beret and Micro:bit, both are great tools t
 # Installing
 
 You need to have an Android Things developer kit with at least version 1.0 of Android Things installed.
+You have a few options, I suggest you take the easy way.
+
+## The Easy Way
+- Install the [Beret things apk](https://github.com/plattysoft/Beret/blob/master/releases/beret-things-1.0.apk) into your Android Things Developer Kit usig adb
+- Install the mobile app in yout tablet or phone via Google Play
+- You are good to go
+
+## The Slightly harder way
 - Clone the repo
 - Open it on Android Studio
 - Compile and install the things module to your Dev Kit
-- Optionally: Compile and install the mobile module into a phone or tablet to be used as editor
+- Compile and install the mobile module into a phone or tablet to be used as editor
 
-For the version 1.0 onwards I plan to include a compiled .apk and also a system image of Android Things and to publish the editor in Google Play
+There is a plan to include a system image of Android Things as well so you just need to flash it.
 
 # Available Blocks
 
@@ -86,15 +94,14 @@ This is a list of suggested exercises for beginners. Proper project descriptions
 - Control servo via Rainbow HAT (future example)
 - Simon says game?
 
-# Future Work
+# Future Work (soon to be moved into the issue tracker)
+- Support for Servos via the PWM output
 - Compile only completed blocks, ignore "headless"
 - Allow multiple entries to an event
 - Support for multiple save files
 - Add a reset key combo to the app, to stop the JS and restart advertising
 - Add animation to "compile" or "load" using the Rainbow HAT
 - Add Rainbow HAT simulator to the mobile app to "test"
-- Improve companion app
-- Support for Servos via the PWM output
 - All the API methods from the components as blocks
 - Support for selected I2C or SPI peripherals (i.e. LED Matrix)
 - Consider using Rhino instead of a WebView to execute the generated JavaScript
