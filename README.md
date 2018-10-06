@@ -12,12 +12,17 @@ You need to have an Android Things developer kit with at least version 1.0 of An
 You can use a monitor, keyboard and mouse connected to your dev kit, or you can use the companion app on a tablet to create your programs.
 You have a few options, I suggest you take the easy way.
 
-## The easy way
+## The simple way
+- Flash the [Bert Android Things Image](https://www.dropbox.com/s/1kd0iw3x5lk7l51/Beret%20-%20Raspberry%20Pi_Raspberry%20Pi%203_1_1.0_development_build.zip?dl=0) into your Android Things device using the setup tool
+- Optional: Install the mobile app in yout tablet or phone via [Google Play](https://play.google.com/store/apps/details?id=com.plattysoft.beret)
+- You are good to go
+
+## The easy way (if you have an Android Things dev kit ready)
 - Install the [Beret things apk](https://github.com/plattysoft/Beret/blob/master/releases/beret-things-1.0.apk) into your Android Things Developer Kit usig adb
 - Optional: Install the mobile app in yout tablet or phone via [Google Play](https://play.google.com/store/apps/details?id=com.plattysoft.beret)
 - You are good to go
 
-## The slightly harder way
+## The slightly harder way (if you like compiling things)
 - Clone the repo
 - Open it on Android Studio
 - Compile and install the things module to your Dev Kit
