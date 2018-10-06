@@ -17,12 +17,30 @@ You have a few options, I suggest you take the easy way.
 - Optional: Install the mobile app in yout tablet or phone via [Google Play](https://play.google.com/store/apps/details?id=com.plattysoft.beret)
 - You are good to go
 
-## The easy way (if you have an Android Things dev kit ready)
+[How to flash an Android Things image on a Raspberry Pi](https://developer.android.com/things/hardware/raspberrypi#flashing_the_image)
+
+## The easy way
+
+### Prerequisites:
+
+- Android Things developer kit setup
+- Android SDK installed
+
+### Steps:
+
 - Install the [Beret things apk](https://github.com/plattysoft/Beret/blob/master/releases/beret-things-1.0.apk) into your Android Things Developer Kit usig adb
 - Optional: Install the mobile app in yout tablet or phone via [Google Play](https://play.google.com/store/apps/details?id=com.plattysoft.beret)
 - You are good to go
 
 ## The slightly harder way (if you like compiling things)
+
+### Prerequisites:
+
+- Android Things developer kit setup
+- Android Studio installed and configured
+
+### Steps
+
 - Clone the repo
 - Open it on Android Studio
 - Compile and install the things module to your Dev Kit
