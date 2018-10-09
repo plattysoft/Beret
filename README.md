@@ -13,7 +13,9 @@ There are 2 main ways to use Beret: Directly on a developer kit or with a compan
 ## Using Beret directly
 
 When you use Beret direclty you write the programs in the same device that runs them, which has certain appeal. For this you need an Android Things developer ket installed with Beret (see next section for options) and a way to interact with it.
+
 For a Raspberry Pi a common use case is to attach an HDMI Monitor and a mouse (and optionally a keyboard).
+
 For an iMX7D a common use case is to use the touchscreen included with the development kit.
 
 ## Using Beret Editor
